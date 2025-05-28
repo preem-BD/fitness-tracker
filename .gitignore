@@ -1,0 +1,60 @@
+# Dependencies
+node_modules
+
+# Output
+.output
+.vercel
+.netlify
+.wrangler
+/.svelte-kit
+/build
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+!.env.example
+!.env.test
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# ===== NEUE ERGÄNZUNGEN FÜR FITNESS TRACKER =====
+
+# MongoDB / Database
+*.log
+dumps/
+backups/
+mongodb-data/
+db-exports/
+
+# IDE / Editor
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Development
+coverage/
+.nyc_output
+*.tgz
+*.tar.gz
+
+# macOS specific (zusätzlich)
+.AppleDouble
+.LSOverride
+
+# Windows specific (zusätzlich)
+*.lnk
+ehthumbs.db
