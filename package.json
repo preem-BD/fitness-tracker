@@ -7,9 +7,12 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
+		"seed": "node scripts/seed-database.js",
+		"seed:fresh": "node scripts/seed-database.js --fresh",
 		"prepare": "svelte-kit sync || echo ''",
 		"format": "prettier --write .",
-		"lint": "prettier --check . && eslint ."
+		"lint": "prettier --check . && eslint .",
+		"fix-achievements": "node scripts/fix-achievements.js"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.5",

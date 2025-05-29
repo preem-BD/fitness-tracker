@@ -142,17 +142,51 @@
         </ul>
       </li>
 
-      <!-- Goals -->
-      <li class="nav-item">
-        <a 
-          href="/goals" 
-          class="nav-link"
-          class:active={currentPath === '/goals'}
-          onclick={closeMobileMenu}
+      <!-- Ziele Dropdown -->
+      <li class="nav-item dropdown" class:open={isGoalsDropdownOpen}>
+        <button 
+          type="button"
+          class="nav-link dropdown-toggle"
+          class:active={isGoalsSection}
+          onclick={toggleGoalsDropdown}
         >
           <span class="nav-icon">🎯</span>
-          <span class="nav-text">Ziele</span>
-        </a>
+          <span class="nav-text">Goals</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
+        
+        <ul class="dropdown-menu" class:show={isGoalsDropdownOpen}>
+          <li>
+            <a 
+              href="/goals" 
+              class="dropdown-link"
+              class:active={currentPath === '/goals'}
+              onclick={closeMobileMenu}
+            >
+              📋 Alle Ziele
+            </a>
+          </li>
+          <li>
+            <a 
+              href="/goals/create" 
+              class="dropdown-link"
+              class:active={currentPath === '/goals/create'}
+              onclick={closeMobileMenu}
+            >
+              ➕ Neues Ziel
+            </a>
+          </li>
+          <li class="dropdown-divider"></li>
+          <li>
+            <a 
+              href="/goals/stats" 
+              class="dropdown-link"
+              onclick={closeMobileMenu}
+            >
+              📊 Ziel-Statistiken
+            </a>
+          </li>
+        </ul>
       </li>
 
       <!-- Statistics -->
@@ -193,6 +227,11 @@
           <li>
             <a href="/exercises/create" class="action-link" onclick={closeMobileMenu}>
               🏋️ Neue Exercise
+            </a>
+          </li>
+          <li>
+            <a href="/goals/create" class="action-link" onclick={closeMobileMenu}>
+              🎯 Neues Ziel
             </a>
           </li>
           <li>
@@ -237,6 +276,7 @@
   let isMobileMenuOpen = $state(false);
   let isWorkoutDropdownOpen = $state(false);
   let isExerciseDropdownOpen = $state(false);
+  let isGoalsDropdownOpen = $state(false);
   let isQuickAddOpen = $state(false);
 
   /* 
@@ -254,6 +294,10 @@
     currentPath.startsWith('/exercises')
   );
 
+  let isGoalsSection = $derived(
+    currentPath.startsWith('/goals')
+  );
+
   /* 
     NAVIGATION INTERACTION FUNCTIONS
     Event Handlers für Menu-Steuerung
@@ -267,6 +311,7 @@
     if (isMobileMenuOpen) {
       isWorkoutDropdownOpen = false;
       isExerciseDropdownOpen = false;
+      isGoalsDropdownOpen = false;
       isQuickAddOpen = false;
     }
     
@@ -277,6 +322,7 @@
     isMobileMenuOpen = false;
     isWorkoutDropdownOpen = false;
     isExerciseDropdownOpen = false;
+    isGoalsDropdownOpen = false;
     isQuickAddOpen = false;
   }
 
@@ -287,6 +333,7 @@
     // Andere Dropdowns schließen
     if (isWorkoutDropdownOpen) {
       isExerciseDropdownOpen = false;
+      isGoalsDropdownOpen = false;
       isQuickAddOpen = false;
     }
   }
@@ -297,6 +344,18 @@
     // Andere Dropdowns schließen
     if (isExerciseDropdownOpen) {
       isWorkoutDropdownOpen = false;
+      isGoalsDropdownOpen = false;
+      isQuickAddOpen = false;
+    }
+  }
+
+  function toggleGoalsDropdown() {
+    isGoalsDropdownOpen = !isGoalsDropdownOpen;
+    
+    // Andere Dropdowns schließen
+    if (isGoalsDropdownOpen) {
+      isWorkoutDropdownOpen = false;
+      isExerciseDropdownOpen = false;
       isQuickAddOpen = false;
     }
   }
@@ -308,6 +367,7 @@
     if (isQuickAddOpen) {
       isWorkoutDropdownOpen = false;
       isExerciseDropdownOpen = false;
+      isGoalsDropdownOpen = false;
     }
   }
 
