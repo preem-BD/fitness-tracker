@@ -117,12 +117,16 @@
 
   .page-header h1 {
     margin-bottom: 10px;
-    color: #333;
+    color: var(--text-primary);
+  }
+
+  .page-header p {
+    color: var(--text-secondary);
   }
 
   .error-banner {
-    background: #f8d7da;
-    color: #721c24;
+    background: var(--error-bg);
+    color: var(--error-text);
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -132,8 +136,8 @@
   }
 
   .error-banner button {
-    background: #721c24;
-    color: white;
+    background: var(--error-text);
+    color: var(--error-bg);
     border: none;
     padding: 8px 15px;
     border-radius: 4px;
@@ -141,7 +145,7 @@
   }
 
   .stats-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     color: white;
     padding: 30px;
     border-radius: 12px;
@@ -180,8 +184,13 @@
     margin-bottom: 25px;
   }
 
+  .section-header h2 {
+    color: var(--text-primary);
+    margin: 0;
+  }
+
   .create-btn {
-    background: #28a745;
+    background: var(--success);
     color: white;
     padding: 12px 24px;
     text-decoration: none;
@@ -191,7 +200,7 @@
   }
 
   .create-btn:hover {
-    background: #218838;
+    background: var(--success-dark);
   }
 
   .workouts-grid {
@@ -201,17 +210,17 @@
   }
 
   .workout-card {
-    background: white;
-    border: 1px solid #e9ecef;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px var(--shadow-color);
     transition: all 0.2s;
   }
 
   .workout-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px var(--shadow-color);
   }
 
   .workout-header {
@@ -223,7 +232,7 @@
 
   .workout-header h3 {
     margin: 0;
-    color: #333;
+    color: var(--text-primary);
   }
 
   .difficulty-badge {
@@ -233,12 +242,12 @@
     font-weight: bold;
   }
 
-  .difficulty-leicht { background: #d4edda; color: #155724; }
-  .difficulty-mittel { background: #fff3cd; color: #856404; }
-  .difficulty-schwer { background: #f8d7da; color: #721c24; }
+  .difficulty-leicht { background: var(--success-light); color: var(--success-dark); }
+  .difficulty-mittel { background: var(--warning-light); color: var(--warning-dark); }
+  .difficulty-schwer { background: var(--danger-light); color: var(--danger-dark); }
 
   .workout-description {
-    color: #555;
+    color: var(--text-secondary);
     line-height: 1.5;
     margin-bottom: 15px;
   }
@@ -248,7 +257,7 @@
     gap: 15px;
     margin-bottom: 20px;
     font-size: 0.9em;
-    color: #666;
+    color: var(--text-muted);
   }
 
   .workout-actions {
@@ -258,7 +267,7 @@
 
   .details-btn {
     flex: 1;
-    background: #667eea;
+    background: var(--primary);
     color: white;
     padding: 10px;
     text-decoration: none;
@@ -268,12 +277,12 @@
   }
 
   .details-btn:hover {
-    background: #5a67d8;
+    background: var(--primary-dark);
   }
 
   .start-btn {
     flex: 1;
-    background: #ff3e00;
+    background: var(--accent);
     color: white;
     padding: 10px;
     text-decoration: none;
@@ -284,17 +293,18 @@
   }
 
   .start-btn:hover {
-    background: #e63900;
+    background: var(--accent-dark);
   }
 
   .empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: #666;
+    color: var(--text-secondary);
   }
 
   .empty-state h3 {
     margin-bottom: 15px;
+    color: var(--text-primary);
   }
 
   @media (max-width: 768px) {

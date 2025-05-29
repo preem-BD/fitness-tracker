@@ -4,19 +4,19 @@
   Zeigt SvelteKit Layout-System, Global Styling und Component Integration
 -->
 
-<script>
-  /* 
+<script>  /* 
     GLOBAL LAYOUT LOGIC
     Svelte 5 Runes für App-weite Funktionalität
   */
-
   // Component Imports
   import Navigation from '$lib/components/Navigation.svelte';
   import '$lib/styles/global.css'; // Global Styles Import
+  
+  // Theme Store Import - Initialisiert Dark Mode (nur im Browser)
+  import { onMount } from 'svelte';
 
   // SvelteKit Imports
   import { page } from '$app/stores';
-  import { onMount } from 'svelte';
 
   /* 
     SVELTE 5 STATE für Layout-Features
@@ -191,8 +191,7 @@
   <!-- 
     MAIN CONTENT AREA
     Hier wird der Page-Content gerendert
-  -->
-  <main class="main-content" class:home-page={isHomePage}>
+  -->  <main class="main-content" class:home-page={isHomePage}>
     
     <!-- 
       PAGE CONTENT SLOT
@@ -214,11 +213,10 @@
       <!-- Footer Links -->
       <div class="footer-section">
         <h3>💪 Fitness Tracker</h3>
-        <p>Deine professionelle Trainings-App</p>
-        <div class="footer-social">
-          <a href="#" class="social-link">📧 Kontakt</a>
-          <a href="#" class="social-link">🐙 GitHub</a>
-          <a href="#" class="social-link">📱 App Store</a>
+        <p>Deine professionelle Trainings-App</p>        <div class="footer-social">
+          <a href="https://github.com/preem-BD/fitness-tracker" class="social-link" target="_blank" rel="noopener noreferrer">📧 Kontakt</a>
+          <a href="https://github.com/preem-BD/fitness-tracker" class="social-link" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
+          <a href="https://github.com/preem-BD/fitness-tracker" class="social-link" target="_blank" rel="noopener noreferrer">📱 App Store</a>
         </div>
       </div>
 
@@ -255,11 +253,9 @@
         </ul>
       </div>
 
-    </div>
-
-    <!-- Footer Bottom -->
+    </div>    <!-- Footer Bottom -->
     <div class="footer-bottom">
-      <p>&copy; 2024 Fitness Tracker. Erstellt mit SvelteKit 💻</p>
+      <p>&copy; 2025 Fitness Tracker. Erstellt mit SvelteKit 💻</p>
       <p class="tech-stack">
         <span class="tech-badge">Svelte 5</span>
         <span class="tech-badge">SvelteKit</span>
@@ -304,14 +300,14 @@
   :global(html) {
     scroll-behavior: smooth;
   }
-
   :global(body) {
     margin: 0;
     padding: 0;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #f8f9fa;
-    color: #333;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
     line-height: 1.6;
+    transition: background-color var(--transition-normal), color var(--transition-normal);
   }
 
   .app-layout {
@@ -350,15 +346,15 @@
   /* 
     MAIN CONTENT AREA
     Responsive Content Container
-  */
-  .main-content {
+  */  .main-content {
     width: 100%;
     min-height: calc(100vh - 64px - 200px); /* Navigation height - Footer height */
-    background: #f8f9fa;
+    background: var(--bg-secondary);
+    transition: background-color var(--transition-normal);
   }
 
   .main-content.home-page {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
   }
 
   .content-wrapper {

@@ -308,18 +308,17 @@
 
   .page-header h1 {
     margin-bottom: 10px;
-    color: #333;
+    color: var(--text-primary);
   }
 
   .page-header p {
-    color: #666;
-    font-size: 1.1em;
+    color: var(--text-secondary);
   }
 
   /* Error Banner */
   .error-banner {
-    background: #f8d7da;
-    color: #721c24;
+    background-color: var(--error-bg);
+    color: var(--error-text);
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -329,12 +328,25 @@
   }
 
   .error-banner button {
-    background: #721c24;
+    background-color: var(--error-text);
     color: white;
     border: none;
     padding: 8px 15px;
     border-radius: 4px;
     cursor: pointer;
+  }
+
+  /* Success Banner - NEU FÜR DARK MODE */
+.success-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--success-light);
+    border: 1px solid var(--success);
+    color: var(--success-dark);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
   }
 
   /* Alert Debug */
@@ -396,7 +408,7 @@
 
   /* Filter Section */
   .filter-section {
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     padding: 25px;
     border-radius: 12px;
     margin-bottom: 30px;
@@ -404,7 +416,7 @@
 
   .filter-section h2 {
     margin-bottom: 20px;
-    color: #333;
+    color: var(--text-primary);
   }
 
   .filter-form {
@@ -421,16 +433,18 @@
 
   .search-input {
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 16px;
     transition: border-color 0.2s;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
   }
 
   .search-input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-transparent);
   }
 
   .filter-buttons {
@@ -441,8 +455,9 @@
 
   .filter-btn {
     padding: 8px 16px;
-    border: 1px solid #ddd;
-    background: white;
+    border: 1px solid var(--border-color);
+    background: var(--bg-primary);
+    color: var(--text-primary);
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
@@ -450,13 +465,31 @@
   }
 
   .filter-btn:hover {
-    background: #f8f9fa;
+    background: var(--bg-secondary);
   }
 
   .filter-btn.active {
-    background: #667eea;
+    background: var(--primary);
     color: white;
-    border-color: #667eea;
+    border-color: var(--primary);
+  }
+
+  /* Goals Dashboard */
+  .dashboard-section {
+    margin-bottom: 40px;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-primary);
   }
 
   /* Section Header */
@@ -469,11 +502,11 @@
 
   .section-header h2 {
     margin: 0;
-    color: #333;
+    color: var(--text-primary);
   }
 
   .create-btn {
-    background: #28a745;
+    background: var(--success);
     color: white;
     padding: 12px 24px;
     text-decoration: none;
@@ -483,220 +516,102 @@
   }
 
   .create-btn:hover {
-    background: #218838;
+    background: var(--success-dark);
   }
 
   /* Goals Grid */
   .goals-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
   }
 
   /* Goal Card */
   .goal-card {
-    background: white;
-    border: 1px solid #e9ecef;
+    background-color: var(--card-bg);
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: all 0.2s;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
 
   .goal-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 16px var(--shadow-color);
   }
 
   .goal-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 15px;
   }
 
   .goal-header h3 {
     margin: 0;
-    color: #333;
+    color: var(--text-primary);
   }
 
   .status-badge {
-    padding: 4px 12px;
+    padding: 6px 12px;
     border-radius: 20px;
-    font-size: 0.8em;
-    font-weight: bold;
+    font-size: 0.75rem;
+    font-weight: 600;
   }
 
-  .status-achieved { background: #d4edda; color: #155724; }
-  .status-active { background: #cce5ff; color: #004085; }
+  .status-achieved { background: var(--success-light); color: var(--success-dark); }
+  .status-active { background: var(--info-light); color: var(--info-dark); }
 
   .goal-description {
-    color: #555;
-    line-height: 1.5;
+    color: var(--text-secondary);
     margin-bottom: 15px;
+    line-height: 1.5;
   }
 
   .goal-meta {
     display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-    font-size: 0.9em;
-    color: #666;
-  }
-
-/* Progress Section - CENTERED & READABLE */
-.progress-section {
-  margin-bottom: 20px;
-  background: #f8f9fa;
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid #e9ecef;
-  text-align: center; /* Center everything */
-}
-
-.progress-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  font-weight: 600;
-}
-
-.progress-label {
-  color: #495057;
-  font-size: 0.9em;
-}
-
-.progress-value {
-  color: #333; /* Darker for better readability */
-  font-size: 1.1em;
-  font-weight: bold;
-}
-
-.progress-bar-container {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center; /* Center the progress bar */
-}
-
-.progress-bar {
-  width: 100%; /* Full width but centered content */
-  height: 28px; /* Slightly increased height */
-  background: #e9ecef;
-  border-radius: 14px;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid #dee2e6;
-}
-
-.progress-fill {
-  height: 100%;
-  border-radius: 14px;
-  transition: width 0.5s ease;
-  position: relative;
-  min-width: 40px; /* Minimum width for text visibility */
-}
-
-.progress-text {
-  /* CENTERED BLACK TEXT FOR READABILITY */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #000 !important; /* Black text for all backgrounds */
-  font-weight: bold;
-  font-size: 0.9em;
-  text-shadow: 
-    1px 1px 1px rgba(255,255,255,0.8),
-    -1px -1px 1px rgba(255,255,255,0.8),
-    1px -1px 1px rgba(255,255,255,0.8),
-    -1px 1px 1px rgba(255,255,255,0.8); /* White outline for contrast */
-  width: auto;
-  text-align: center;
-  z-index: 10;
-}
-
-/* Progress Colors - Keep existing gradients */
-.progress-success { 
-  background: linear-gradient(90deg, #28a745, #20c997);
-}
-
-.progress-info { 
-  background: linear-gradient(90deg, #17a2b8, #20c997);
-}
-
-.progress-warning { 
-  background: linear-gradient(90deg, #ffc107, #fd7e14);
-}
-
-.progress-danger { 
-  background: linear-gradient(90deg, #dc3545, #e83e8c);
-}
-
-.progress-details {
-  display: flex;
-  justify-content: center; /* Center the progress details */
-  align-items: center;
-  gap: 8px;
-  font-size: 0.95em;
-  color: #6c757d;
-  font-weight: 500;
-  margin-top: 5px;
-}
-
-.current-value {
-  font-weight: bold;
-  color: #495057;
-}
-
-.target-value {
-  font-weight: bold;
-  color: #6c757d;
-}
-
-.separator {
-  color: #adb5bd;
-  font-weight: normal;
-}
-
-/* Additional improvement: Center align the whole section */
-.goal-card .progress-section {
-  text-align: center;
-}
-
-/* Make sure percentage is always visible with black text */
-.progress-bar::after {
-  content: attr(data-percentage);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #000;
-  font-weight: bold;
-  font-size: 0.9em;
-  text-shadow: 
-    1px 1px 1px rgba(255,255,255,0.9),
-    -1px -1px 1px rgba(255,255,255,0.9),
-    1px -1px 1px rgba(255,255,255,0.9),
-    -1px 1px 1px rgba(255,255,255,0.9);
-  z-index: 10;
-  pointer-events: none;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .progress-details {
     flex-direction: column;
-    gap: 4px;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
   }
-  
+
+  /* Progress Bar */
+  .progress-container {
+    margin: 15px 0;
+  }
+
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+
+  .progress-label {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .progress-value {
+    color: var(--primary);
+    font-weight: bold;
+  }
+
   .progress-bar {
-    height: 32px; /* Slightly bigger on mobile */
+    height: 8px;
+    background-color: var(--bg-tertiary);
+    border-radius: 4px;
+    overflow: hidden;
   }
-  
-  .progress-text {
-    font-size: 1em;
+
+  .progress-fill {
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: 4px;
+    transition: width 0.3s ease;
   }
-}
 
   /* Goal Actions - EXAKT wie Workout Actions */
   .goal-actions {
@@ -738,11 +653,12 @@
   .empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: #666;
+    color: var(--text-secondary);
   }
 
   .empty-state h3 {
     margin-bottom: 15px;
+    color: var(--text-primary);
   }
 
   /* Responsive Design - EXAKT wie Workout Page */

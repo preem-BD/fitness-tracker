@@ -238,9 +238,19 @@
             <a href="/sessions/quick-start" class="action-link" onclick={closeMobileMenu}>
               🚀 Quick Workout
             </a>
-          </li>
-        </ul>
-      </div>
+          </li>        </ul>      </div>      
+      
+      <!-- Theme Toggle -->
+      <button 
+        type="button" 
+        class="action-btn theme-btn"
+        onclick={toggleTheme}
+        aria-label={$themeLabel}
+        title={$themeLabel}
+      >
+        <span class="action-icon">{$themeIcon}</span>
+        <span class="action-text">{$isDarkMode ? 'Light' : 'Dark'}</span>
+      </button>
 
       <!-- User Menu (für später) -->
       <button type="button" class="action-btn user-btn">
@@ -265,42 +275,40 @@
 
 <script>
   /* 
-    NAVIGATION COMPONENT - SVELTE 5 RUNES
-    Zeigt moderne Component-Architektur und State Management
+    NAVIGATION COMPONENT LOGIC
+    Svelte 5 Runes für moderne State-Verwaltung
   */
-
-  // SvelteKit Navigation Imports
+    // SvelteKit Imports für Routing
   import { page } from '$app/stores';
-  import { goto } from '$app/navigation';
+  import { browser } from '$app/environment';
+  import { onMount } from 'svelte';
+  
+  // Theme Store Import
+  import { isDarkMode, toggleTheme, themeIcon, themeLabel, initTheme } from '$lib/stores/theme.js';
 
   /* 
-    SVELTE 5 STATE MANAGEMENT
-    Reactive State für Navigation-Interaktionen
-  */
-  let isMobileMenuOpen = $state(false);
+    COMPONENT STATE (Svelte 5 Runes)
+    Lokaler Component State mit $state()
+  */  let isMobileMenuOpen = $state(false);
   let isWorkoutDropdownOpen = $state(false);
   let isExerciseDropdownOpen = $state(false);
   let isGoalsDropdownOpen = $state(false);
   let isQuickAddOpen = $state(false);
 
   /* 
-    DERIVED VALUES (Svelte 5)
-    Berechnete Werte basierend auf aktueller Route
+    DERIVED VALUES
+    Berechnete Werte mit $derived()
   */
-  let currentPath = $derived($page.url.pathname);
+  let currentPath = $derived($page?.url?.pathname || '/');
   
-  let isWorkoutSection = $derived(
-    currentPath.startsWith('/workouts') || 
-    currentPath.startsWith('/sessions')
-  );
-  
-  let isExerciseSection = $derived(
-    currentPath.startsWith('/exercises')
-  );
-
-  let isGoalsSection = $derived(
-    currentPath.startsWith('/goals')
-  );
+  // Section Active States
+  let isWorkoutSection = $derived(currentPath.startsWith('/workouts'));
+  let isExerciseSection = $derived(currentPath.startsWith('/exercises'));
+  let isGoalsSection = $derived(currentPath.startsWith('/goals'));
+  /* 
+    NAVIGATION FUNCTIONS
+    Event Handler und Utility Functions
+  */
 
   /* 
     NAVIGATION INTERACTION FUNCTIONS
@@ -430,6 +438,16 @@
       return () => {
         document.body.style.overflow = '';
       };
+    }  });
+
+  // Theme Store Initialisierung
+  onMount(() => {
+    if (browser) {
+      try {
+        initTheme();
+      } catch (error) {
+        console.warn('Theme initialization failed:', error);
+      }
     }
   });
 </script>

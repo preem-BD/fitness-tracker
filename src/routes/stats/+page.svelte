@@ -196,83 +196,83 @@
           </div>
         </div>
 
-<!-- Goals by Type - CORRECTED ACHIEVEMENT RATE -->
-<div class="breakdown-card">
-  <h3>🎯 Goals nach Typ</h3>
-  <small class="chart-subtitle">Bars zeigen Erfolgsquote pro Typ</small>
-  <div class="chart-container">
-    {#if data.stats.goalTypeStats && data.stats.goalTypeStats.length > 0}
-      <!-- NEW: Use goalTypeStats with German labels and achievement rates -->
-      {#each data.stats.goalTypeStats as stat}
-        <div class="goal-type-item mb-3">
-          <div class="bar-info">
-            <span class="bar-label">{stat.label}</span>
-            <span class="bar-value">{stat.count} ({stat.achieved} ✅)</span>
-          </div>
-          
-          <!-- CORRECTED: Bar shows Achievement Rate, not Total Count -->
-          <div class="bar-visual-new">
-            <div class="progress-container">
-              <div 
-                class="progress-bar-achievement"
-                class:achievement-excellent={stat.completionRate >= 80}
-                class:achievement-good={stat.completionRate >= 60 && stat.completionRate < 80}
-                class:achievement-fair={stat.completionRate >= 40 && stat.completionRate < 60}
-                class:achievement-poor={stat.completionRate < 40}
-                style="width: {stat.completionRate}%"
-              >
-                <!-- Show percentage in bar if > 15% -->
-                {#if stat.completionRate > 15}
-                  <span class="achievement-text">{stat.completionRate}%</span>
-                {/if}
-              </div>
-            </div>
-            <!-- Achievement rate as text -->
-            <small class="achievement-rate-text {stat.completionRate >= 50 ? 'text-success' : 'text-muted'}">
-              {stat.completionRate}% Erfolgsquote
-            </small>
-          </div>
-          
-          <!-- Achievement breakdown -->
-          <div class="achievement-breakdown">
-            <div class="breakdown-item">
-              <span class="breakdown-dot achieved"></span>
-              <span class="breakdown-text">{stat.achieved} erreicht</span>
-            </div>
-            <div class="breakdown-item">
-              <span class="breakdown-dot in-progress"></span>
-              <span class="breakdown-text">{stat.count - stat.achieved} in Arbeit</span>
-            </div>
-            <div class="breakdown-item">
-              <span class="breakdown-total">Gesamt: {stat.count}</span>
-            </div>
+        <!-- Goals by Type - CORRECTED ACHIEVEMENT RATE -->
+        <div class="breakdown-card">
+          <h3>🎯 Goals nach Typ</h3>
+          <small class="chart-subtitle">Bars zeigen Erfolgsquote pro Typ</small>
+          <div class="chart-container">
+            {#if data.stats.goalTypeStats && data.stats.goalTypeStats.length > 0}
+              <!-- NEW: Use goalTypeStats with German labels and achievement rates -->
+              {#each data.stats.goalTypeStats as stat}
+                <div class="goal-type-item mb-3">
+                  <div class="bar-info">
+                    <span class="bar-label">{stat.label}</span>
+                    <span class="bar-value">{stat.count} ({stat.achieved} ✅)</span>
+                  </div>
+                  
+                  <!-- CORRECTED: Bar shows Achievement Rate, not Total Count -->
+                  <div class="bar-visual-new">
+                    <div class="progress-container">
+                      <div 
+                        class="progress-bar-achievement"
+                        class:achievement-excellent={stat.completionRate >= 80}
+                        class:achievement-good={stat.completionRate >= 60 && stat.completionRate < 80}
+                        class:achievement-fair={stat.completionRate >= 40 && stat.completionRate < 60}
+                        class:achievement-poor={stat.completionRate < 40}
+                        style="width: {stat.completionRate}%"
+                      >
+                        <!-- Show percentage in bar if > 15% -->
+                        {#if stat.completionRate > 15}
+                          <span class="achievement-text">{stat.completionRate}%</span>
+                        {/if}
+                      </div>
+                    </div>
+                    <!-- Achievement rate as text -->
+                    <small class="achievement-rate-text {stat.completionRate >= 50 ? 'text-success' : 'text-muted'}">
+                      {stat.completionRate}% Erfolgsquote
+                    </small>
+                  </div>
+                  
+                  <!-- Achievement breakdown -->
+                  <div class="achievement-breakdown">
+                    <div class="breakdown-item">
+                      <span class="breakdown-dot achieved"></span>
+                      <span class="breakdown-text">{stat.achieved} erreicht</span>
+                    </div>
+                    <div class="breakdown-item">
+                      <span class="breakdown-dot in-progress"></span>
+                      <span class="breakdown-text">{stat.count - stat.achieved} in Arbeit</span>
+                    </div>
+                    <div class="breakdown-item">
+                      <span class="breakdown-total">Gesamt: {stat.count}</span>
+                    </div>
+                  </div>
+                </div>
+              {/each}
+            {:else}
+              <!-- FALLBACK: Use old data structure if goalTypeStats not available -->
+              {#each Object.entries(data.stats.goals.byType) as [type, typeData]}
+                <div class="chart-bar">
+                  <div class="bar-info">
+                    <span class="bar-label">{type}</span>
+                    <span class="bar-value">{typeData.total} ({typeData.achieved} ✅)</span>
+                  </div>
+                  <div class="bar-visual">
+                    <!-- CORRECTED: Show achievement rate instead of total count -->
+                    <div 
+                      class="bar-fill achievement-rate-bar"
+                      style="width: {typeData.total > 0 ? (typeData.achieved / typeData.total) * 100 : 0}%"
+                    >
+                      {#if typeData.total > 0 && (typeData.achieved / typeData.total) * 100 > 15}
+                        <span class="bar-text">{Math.round((typeData.achieved / typeData.total) * 100)}%</span>
+                      {/if}
+                    </div>
+                  </div>
+                </div>
+              {/each}
+            {/if}
           </div>
         </div>
-      {/each}
-    {:else}
-      <!-- FALLBACK: Use old data structure if goalTypeStats not available -->
-      {#each Object.entries(data.stats.goals.byType) as [type, typeData]}
-        <div class="chart-bar">
-          <div class="bar-info">
-            <span class="bar-label">{type}</span>
-            <span class="bar-value">{typeData.total} ({typeData.achieved} ✅)</span>
-          </div>
-          <div class="bar-visual">
-            <!-- CORRECTED: Show achievement rate instead of total count -->
-            <div 
-              class="bar-fill achievement-rate-bar"
-              style="width: {typeData.total > 0 ? (typeData.achieved / typeData.total) * 100 : 0}%"
-            >
-              {#if typeData.total > 0 && (typeData.achieved / typeData.total) * 100 > 15}
-                <span class="bar-text">{Math.round((typeData.achieved / typeData.total) * 100)}%</span>
-              {/if}
-            </div>
-          </div>
-        </div>
-      {/each}
-    {/if}
-  </div>
-</div>
 
         <!-- Exercises by Muscle Group -->
         <div class="breakdown-card">
@@ -537,114 +537,143 @@
   */
   
   .stats-page {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
   }
 
   .page-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
 
   .page-header h1 {
-    color: #333;
     margin-bottom: 10px;
-    font-size: 2.5rem;
+    color: var(--text-primary);
   }
 
   .page-header p {
-    color: #666;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
   }
 
   .last-updated {
-    color: #888;
-    font-size: 0.9rem;
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 5px;
   }
 
-  /* ERROR HANDLING */
+  /* Error Banner */
   .error-banner {
-    background: #f8d7da;
-    color: #721c24;
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 30px;
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
   .error-banner button {
-    background: #721c24;
+    background-color: var(--error-text);
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
+    padding: 8px 15px;
+    border-radius: 4px;
     cursor: pointer;
   }
 
-  /* OVERVIEW SECTION */
-  .overview-section {
+  /* Loading State */
+  .loading-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+  }
+
+  .loading-state h3 {
+    margin: 15px 0;
+    color: var(--text-primary);
+  }
+
+  .loading-spinner {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 4px solid var(--border-color);
+    border-radius: 50%;
+    border-top-color: var(--primary);
+    animation: spin 1s ease-in-out infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Sections */
+  .overview-section, .breakdown-section, .activity-section, .actions-section {
     margin-bottom: 40px;
   }
 
-  .overview-section h2 {
-    margin-bottom: 25px;
-    color: #333;
-    font-size: 1.8rem;
+  .overview-section h2, .breakdown-section h2, .activity-section h2, .actions-section h2 {
+    margin-bottom: 20px;
+    color: var(--text-primary);
   }
 
+  /* Overview Grid and Cards */
   .overview-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
   }
 
-  /* STAT CARDS */
   .stat-card {
-    background: white;
-    border-radius: 16px;
-    padding: 25px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #667eea, #764ba2);
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s;
   }
 
   .stat-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 15px var(--shadow-color);
+  }
+
+  .workout-stats {
+    border-top: 4px solid var(--primary);
+  }
+
+  .goal-stats {
+    border-top: 4px solid var(--success);
+  }
+
+  .exercise-stats {
+    border-top: 4px solid var(--warning);
+  }
+
+  .progress-stats {
+    border-top: 4px solid var(--info);
   }
 
   .stat-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .stat-header h3 {
     margin: 0;
-    color: #333;
     font-size: 1.2rem;
+    color: var(--text-primary);
   }
 
   .stat-icon {
-    font-size: 2rem;
-    opacity: 0.8;
+    font-size: 1.5rem;
   }
 
   .stat-content {
@@ -659,141 +688,133 @@
 
   .stat-number {
     display: block;
-    font-size: 3rem;
+    font-size: 2.2rem;
     font-weight: bold;
-    color: #667eea;
-    line-height: 1;
+    color: var(--text-primary);
   }
 
   .stat-label {
-    color: #666;
+    display: block;
+    color: var(--text-secondary);
     font-size: 0.9rem;
-    margin-top: 5px;
   }
 
   .sub-stats {
     display: flex;
     justify-content: space-around;
-    gap: 15px;
+    text-align: center;
   }
 
   .sub-stat {
-    text-align: center;
-    padding: 10px;
-    background: #f8f9fa;
-    border-radius: 8px;
     flex: 1;
-  }
-
-  .sub-stat.success {
-    background: #d4edda;
-    color: #155724;
-  }
-
-  .sub-stat.info {
-    background: #d1ecf1;
-    color: #0c5460;
   }
 
   .sub-number {
     display: block;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
+    color: var(--text-primary);
+  }
+
+  .sub-stat.success .sub-number {
+    color: var(--success);
+  }
+
+  .sub-stat.info .sub-number {
+    color: var(--info);
   }
 
   .sub-label {
-    font-size: 0.8rem;
-    opacity: 0.8;
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
   }
 
-  /* PROGRESS INDICATORS */
+  /* Progress Indicator */
   .progress-indicator {
-    margin-top: 15px;
+    margin-top: 5px;
   }
 
   .progress-bar {
-    width: 100%;
     height: 8px;
-    background: #e5e7eb;
+    background-color: var(--bg-tertiary);
     border-radius: 4px;
     overflow: hidden;
+    margin-bottom: 5px;
   }
 
   .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #667eea, #764ba2);
-    transition: width 0.3s ease;
+    background-color: var(--primary);
+    border-radius: 4px;
   }
 
   .progress-label {
-    display: block;
-    text-align: center;
-    margin-top: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #667eea;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
   }
 
-  /* CIRCULAR PROGRESS */
+  /* Circular Progress */
   .circular-progress {
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
-  }
-
-  .progress-ring {
-    transform: rotate(-90deg);
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
   }
 
   .progress-ring-circle {
-    transition: stroke-dashoffset 0.5s ease;
+    transition: stroke-dashoffset 0.3s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+
+  .progress-ring-fill {
+    stroke: var(--primary);
   }
 
   .progress-text {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
   }
 
   .progress-percentage {
-    font-size: 1.2rem;
     font-weight: bold;
-    color: #667eea;
+    font-size: 1.2rem;
+    color: var(--primary);
   }
 
-  /* BREAKDOWN SECTION */
-  .breakdown-section {
-    margin-bottom: 40px;
-  }
-
-  .breakdown-section h2 {
-    margin-bottom: 25px;
-    color: #333;
-    font-size: 1.8rem;
-  }
-
+  /* Breakdown Cards */
   .breakdown-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
   }
 
   .breakdown-card {
-    background: white;
+    background-color: var(--card-bg);
     border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    border: 1px solid rgba(0,0,0,0.05);
+    padding: 20px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border: 1px solid var(--border-color);
   }
 
   .breakdown-card h3 {
-    margin-bottom: 20px;
-    color: #333;
-    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--text-primary);
   }
 
-  /* CHART STYLING */
+  .chart-subtitle {
+    display: block;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+  }
+
+  /* Chart Bars */
   .chart-container {
     display: flex;
     flex-direction: column;
@@ -801,524 +822,381 @@
   }
 
   .chart-bar {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    margin-bottom: 5px;
   }
 
   .bar-info {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
+    margin-bottom: 5px;
   }
 
   .bar-label {
-    font-weight: 500;
-    color: #333;
+    color: var(--text-primary);
   }
 
   .bar-value {
-    color: #666;
-    font-weight: bold;
+    color: var(--text-secondary);
+    font-weight: 500;
   }
 
   .bar-visual {
-    width: 100%;
-    height: 12px;
-    background: #f1f3f4;
-    border-radius: 6px;
+    height: 8px;
+    background-color: var(--bg-tertiary);
+    border-radius: 4px;
     overflow: hidden;
-    position: relative;
   }
 
   .bar-fill {
     height: 100%;
-    border-radius: 6px;
-    transition: width 0.5s ease;
+    background-color: var(--primary);
   }
 
-  .bar-fill.difficulty-leicht { background: #10b981; }
-  .bar-fill.difficulty-mittel { background: #f59e0b; }
-  .bar-fill.difficulty-schwer { background: #ef4444; }
-  .bar-fill.goal-type { background: #667eea; }
-  .bar-fill.muscle-group { background: #8b5cf6; }
-
-  .bar-fill-achieved {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background: #10b981;
-    border-radius: 6px;
-    transition: width 0.5s ease;
+  .bar-fill.muscle-group {
+    background-color: var(--info);
   }
 
-  /* CATEGORIES GRID */
+  .bar-fill.difficulty-leicht {
+    background-color: var(--success);
+  }
+
+  .bar-fill.difficulty-mittel {
+    background-color: var(--warning);
+  }
+
+  .bar-fill.difficulty-schwer {
+    background-color: var(--error);
+  }
+
+  .bar-fill.achievement-rate-bar {
+    background-color: var(--success);
+  }
+
+  .bar-text {
+    font-size: 0.8rem;
+    color: white;
+    padding: 0 6px;
+  }
+
+  /* Categories Grid */
   .categories-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
   }
 
   .category-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px;
-    background: #f8f9fa;
-    border-radius: 8px;
+    gap: 8px;
+    padding: 8px;
+    background-color: var(--bg-secondary);
+    border-radius: 6px;
   }
 
   .category-color {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     flex-shrink: 0;
   }
 
   .category-name {
     flex: 1;
-    font-weight: 500;
-    color: #333;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .category-count {
-    font-weight: bold;
-    color: #667eea;
-    background: white;
-    padding: 2px 8px;
-    border-radius: 12px;
     font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 600;
   }
 
-  /* ACTIVITY SECTION */
-  .activity-section {
-    margin-bottom: 40px;
-  }
-
-  .activity-section h2 {
-    margin-bottom: 25px;
-    color: #333;
-    font-size: 1.8rem;
-  }
-
+  /* Activity Section */
   .activity-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
   }
 
   .activity-card {
-    background: white;
+    background-color: var(--card-bg);
     border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    border: 1px solid rgba(0,0,0,0.05);
+    padding: 20px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border: 1px solid var(--border-color);
   }
 
   .activity-card h3 {
-    margin-bottom: 20px;
-    color: #333;
-    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--text-primary);
   }
 
   .activity-list {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 12px;
   }
 
   .activity-item {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 15px;
-    background: #f8f9fa;
-    border-radius: 10px;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
     position: relative;
   }
 
   .activity-icon {
     font-size: 1.5rem;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
 
   .activity-content {
     flex: 1;
+    min-width: 0; /* for text overflow ellipsis to work */
   }
 
   .activity-title {
-    font-weight: 600;
-    color: #333;
+    font-weight: 500;
     margin-bottom: 5px;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .activity-meta {
     display: flex;
     gap: 10px;
     align-items: center;
-    font-size: 0.8rem;
-    color: #666;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  .activity-date {
+    color: var(--text-muted);
   }
 
   .activity-progress {
-    background: #667eea;
-    color: white;
-    padding: 2px 8px;
-    border-radius: 12px;
+    color: var(--primary);
     font-weight: 500;
-  }
-
-  .difficulty-tag {
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-weight: 500;
-    font-size: 0.7rem;
-  }
-
-  .difficulty-tag.difficulty-leicht { background: #d4edda; color: #155724; }
-  .difficulty-tag.difficulty-mittel { background: #fff3cd; color: #856404; }
-  .difficulty-tag.difficulty-schwer { background: #f8d7da; color: #721c24; }
-
-  .activity-date {
-    color: #888;
-  }
-
-  .activity-action {
-    background: #667eea;
-    color: white;
-    padding: 6px 12px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    transition: background 0.2s;
-  }
-
-  .activity-action:hover {
-    background: #5a67d8;
   }
 
   .activity-progress-bar {
+    height: 4px;
+    background-color: var(--bg-tertiary);
     position: absolute;
     bottom: 0;
-    left: 15px;
-    right: 15px;
-    height: 3px;
-    background: #e5e7eb;
-    border-radius: 2px;
+    left: 0;
+    right: 0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     overflow: hidden;
   }
 
   .activity-progress-fill {
     height: 100%;
-    background: #667eea;
-    transition: width 0.3s ease;
+    background-color: var(--primary);
   }
 
-  /* ACTIONS SECTION */
-  .actions-section {
-    margin-bottom: 40px;
+  .activity-action {
+    padding: 4px 10px;
+    background-color: var(--bg-tertiary);
+    border-radius: 4px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    white-space: nowrap;
   }
 
-  .actions-section h2 {
-    margin-bottom: 25px;
-    color: #333;
-    font-size: 1.8rem;
+  .activity-action:hover {
+    background-color: var(--primary);
+    color: white;
   }
 
+  /* Difficulty Tags */
+  .difficulty-tag {
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .difficulty-leicht {
+    background-color: var(--success-light);
+    color: var(--success-dark);
+  }
+
+  .difficulty-mittel {
+    background-color: var(--warning-light);
+    color: var(--warning-dark);
+  }
+
+  .difficulty-schwer {
+    background-color: var(--error-light);
+    color: var(--error-dark);
+  }
+
+  /* Quick Actions */
   .actions-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
   }
 
   .action-card {
-    background: white;
-    border: 2px solid #f1f3f4;
+    background-color: var(--card-bg);
     border-radius: 12px;
-    padding: 25px;
-    text-decoration: none;
-    color: inherit;
+    padding: 20px;
     text-align: center;
-    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition: transform 0.2s;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
     cursor: pointer;
     display: block;
   }
 
   .action-card:hover {
-    border-color: #667eea;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--shadow-color);
   }
 
   .action-icon {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 15px;
-    display: block;
   }
 
   .action-card h3 {
-    margin-bottom: 10px;
-    color: #333;
+    margin: 0 0 10px;
+    color: var(--text-primary);
     font-size: 1.1rem;
   }
 
   .action-card p {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9rem;
-    line-height: 1.4;
     margin: 0;
   }
 
-  .goal-action:hover { border-color: #667eea; }
-  .workout-action:hover { border-color: #10b981; }
-  .exercise-action:hover { border-color: #8b5cf6; }
-  .refresh-action:hover { border-color: #f59e0b; }
-
-  /* LOADING STATE */
-  .loading-state {
-    text-align: center;
-    padding: 80px 20px;
-    color: #666;
+  .goal-action .action-icon {
+    color: var(--success);
   }
 
-  .loading-spinner {
-    width: 60px;
-    height: 60px;
-    border: 4px solid #f1f3f4;
-    border-left: 4px solid #667eea;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 30px;
+  .workout-action .action-icon {
+    color: var(--primary);
   }
 
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  .exercise-action .action-icon {
+    color: var(--warning);
   }
 
-  .loading-state h3 {
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-  }
-
-  /* GOAL TYPES - ACHIEVEMENT RATE STYLING */
-.chart-subtitle {
-  display: block;
-  color: #6c757d;
-  font-style: italic;
-  margin-bottom: 15px;
-  font-size: 0.85rem;
-}
-
-.goal-type-item {
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 10px;
-  border-left: 4px solid #667eea;
-  margin-bottom: 15px;
-  transition: all 0.2s ease;
-}
-
-.goal-type-item:hover {
-  background: #e9ecef;
-  transform: translateX(3px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.bar-visual-new {
-  margin-top: 8px;
-}
-
-.progress-container {
-  width: 100%;
-  height: 16px;
-  background-color: #e9ecef;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid #dee2e6;
-}
-
-.progress-bar-achievement {
-  height: 100%;
-  border-radius: 8px;
-  transition: width 0.7s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-/* Achievement Rate Colors */
-.achievement-excellent { 
-  background: linear-gradient(90deg, #28a745, #20c997);
-}
-
-.achievement-good { 
-  background: linear-gradient(90deg, #17a2b8, #20c997);
-}
-
-.achievement-fair { 
-  background: linear-gradient(90deg, #ffc107, #fd7e14);
-}
-
-.achievement-poor { 
-  background: linear-gradient(90deg, #dc3545, #e83e8c);
-}
-
-.achievement-text {
-  color: white;
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-}
-
-.achievement-rate-text {
-  display: block;
-  text-align: right;
-  font-weight: 600;
-  font-size: 0.8rem;
-  margin-top: 4px;
-}
-
-/* Achievement Breakdown */
-.achievement-breakdown {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px solid #dee2e6;
-}
-
-.breakdown-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.breakdown-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-}
-
-.breakdown-dot.achieved {
-  background: #28a745;
-}
-
-.breakdown-dot.in-progress {
-  background: #ffc107;
-}
-
-.breakdown-text {
-  font-size: 0.75rem;
-  color: #6c757d;
-  font-weight: 500;
-}
-
-.breakdown-total {
-  font-size: 0.75rem;
-  color: #495057;
-  font-weight: 600;
-  background: white;
-  padding: 2px 6px;
-  border-radius: 8px;
-  border: 1px solid #dee2e6;
-}
-
-/* Fallback styling for old data structure */
-.achievement-rate-bar {
-  background: linear-gradient(90deg, #667eea, #764ba2);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bar-text {
-  font-size: 0.75rem;
-  font-weight: bold;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-}
-
-/* Empty state for 0% achievement */
-.progress-bar-achievement[style*="width: 0%"] {
-  background: #f8f9fa !important;
-  border: 1px dashed #dee2e6;
-}
-
-.progress-bar-achievement[style*="width: 0%"]::after {
-  content: "0%";
-  color: #6c757d;
-  font-size: 0.75rem;
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* Responsive improvements */
-@media (max-width: 768px) {
-  .achievement-breakdown {
-    flex-direction: column;
-    gap: 5px;
-    align-items: flex-start;
-  }
-  
-  .breakdown-item {
-    justify-content: space-between;
+  .refresh-action {
+    border: none;
+    font-family: inherit;
     width: 100%;
   }
-}
 
-  /* RESPONSIVE DESIGN */
-  @media (max-width: 768px) {
-    .stats-page {
-      padding: 15px;
-    }
-    
-    .overview-grid,
-    .breakdown-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .activity-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .actions-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .page-header h1 {
-      font-size: 2rem;
-    }
-    
-    .stat-number {
-      font-size: 2.5rem;
-    }
+  .refresh-action .action-icon {
+    color: var(--info);
   }
 
-  @media (max-width: 480px) {
+  /* New Goal Type Chart */
+  .goal-type-item {
+    margin-bottom: 20px;
+  }
+
+  .bar-visual-new {
+    margin: 10px 0;
+  }
+
+  .progress-container {
+    height: 20px;
+    background-color: var(--bg-tertiary);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress-bar-achievement {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: width 0.5s ease;
+  }
+
+  .achievement-excellent { background-color: var(--success); }
+  .achievement-good { background-color: var(--primary); }
+  .achievement-fair { background-color: var(--warning); }
+  .achievement-poor { background-color: var(--error); }
+
+  .achievement-rate-text {
+    display: block;
+    text-align: right;
+    font-size: 0.8rem;
+    margin-top: 5px;
+  }
+
+  .text-success { color: var(--success); }
+  .text-muted { color: var(--text-muted); }
+
+  .achievement-breakdown {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    font-size: 0.85rem;
+  }
+
+  .breakdown-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .breakdown-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .breakdown-dot.achieved {
+    background-color: var(--success);
+  }
+
+  .breakdown-dot.in-progress {
+    background-color: var(--info);
+  }
+
+  .breakdown-text {
+    color: var(--text-secondary);
+  }
+
+  .breakdown-total {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  /* Media Queries */
+  @media (max-width: 768px) {
+    .overview-grid,
+    .breakdown-grid,
+    .activity-grid,
     .actions-grid {
       grid-template-columns: 1fr;
     }
     
-    .sub-stats {
-      flex-direction: column;
-      gap: 10px;
+    .categories-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>

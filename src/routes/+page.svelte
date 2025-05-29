@@ -135,11 +135,10 @@
         <p class="stats-subtitle">Behalte den Überblick über deinen Trainingsfortschritt</p>
       </div>
       
-      <div class="stats-grid">
-        <div class="stat-card">
+      <div class="stats-grid">        <div class="stat-card">
           <div class="stat-icon">💪</div>
           <div class="stat-info">
-            <div class="stat-number" id="workouts-count">-</div>
+            <div class="stat-number">{workoutsCount}</div>
             <div class="stat-label">Workouts verfügbar</div>
           </div>
         </div>
@@ -147,7 +146,7 @@
         <div class="stat-card">
           <div class="stat-icon">🎯</div>
           <div class="stat-info">
-            <div class="stat-number" id="goals-count">-</div>
+            <div class="stat-number">{goalsCount}</div>
             <div class="stat-label">Goals gesetzt</div>
           </div>
         </div>
@@ -155,7 +154,7 @@
         <div class="stat-card">
           <div class="stat-icon">🏋️</div>
           <div class="stat-info">
-            <div class="stat-number" id="exercises-count">-</div>
+            <div class="stat-number">{exercisesCount}</div>
             <div class="stat-label">Exercises verfügbar</div>
           </div>
         </div>
@@ -201,12 +200,11 @@
           <p class="quick-description">Finde die perfekte Übung für dein Training</p>
           <a href="/exercises" class="btn btn-info">Exercise finden</a>
         </div>
-        
-        <div class="quick-card">
+          <div class="quick-card">
           <div class="quick-icon">📊</div>
           <h3 class="quick-title">Statistiken</h3>
           <p class="quick-description">Schaue dir deinen Fortschritt und deine Erfolge an</p>
-          <a href="/goals/stats" class="btn btn-warning">Stats anzeigen</a>
+          <a href="/stats" class="btn btn-warning">Stats anzeigen</a>
         </div>
         
       </div>
@@ -245,13 +243,20 @@
   
   import { onMount } from 'svelte';
   
+  // Svelte 5 Runes State
+  let workoutsCount = $state('-');
+  let goalsCount = $state('-');
+  let exercisesCount = $state('-');
+  let isLoading = $state(true);
+  
   // Animiere Statistiken beim Laden
   onMount(() => {
     // Simuliere das Laden von Statistiken
     setTimeout(() => {
-      document.getElementById('workouts-count').textContent = '12';
-      document.getElementById('goals-count').textContent = '8';
-      document.getElementById('exercises-count').textContent = '50+';
+      workoutsCount = '12';
+      goalsCount = '8';
+      exercisesCount = '50+';
+      isLoading = false;
     }, 500);
     
     // Console log für Page View
@@ -269,10 +274,9 @@
   .landing-page {
     min-height: 100vh;
   }
-
   /* HERO SECTION */
   .hero-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     color: white;
     padding: 4rem 0;
     text-align: center;
@@ -316,11 +320,10 @@
     justify-content: center;
     flex-wrap: wrap;
   }
-
   /* FEATURES SECTION */
   .features-section {
     padding: 4rem 0;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
   }
 
   .section-header {
@@ -331,13 +334,13 @@
   .section-title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1rem;
   }
 
   .section-subtitle {
     font-size: 1.2rem;
-    color: #666;
+    color: var(--text-secondary);
     margin: 0;
   }
 
@@ -348,20 +351,19 @@
     max-width: 1200px;
     margin: 0 auto;
   }
-
   .feature-card {
-    background: white;
+    background: var(--bg-primary);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 32px var(--shadow-color);
     text-align: center;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid var(--border-color);
   }
 
   .feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 40px var(--shadow-color);
   }
 
   .feature-icon {
@@ -373,12 +375,12 @@
   .feature-title {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1rem;
   }
 
   .feature-description {
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.6;
     margin-bottom: 1.5rem;
   }
@@ -389,11 +391,10 @@
     gap: 0.5rem;
     margin-bottom: 1.5rem;
   }
-
   .stat-item {
     font-size: 0.9rem;
-    color: #555;
-    background: #f8f9fa;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
     padding: 0.5rem;
     border-radius: 6px;
   }
@@ -404,10 +405,9 @@
     justify-content: center;
     flex-wrap: wrap;
   }
-
   /* STATS SECTION */
   .stats-section {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: var(--gradient-secondary);
     color: white;
     padding: 3rem 0;
   }
@@ -462,11 +462,10 @@
     opacity: 0.9;
     font-size: 0.9rem;
   }
-
   /* QUICK ACCESS SECTION */
   .quick-access-section {
     padding: 4rem 0;
-    background: white;
+    background: var(--bg-primary);
   }
 
   .quick-access-header {
@@ -483,17 +482,17 @@
   }
 
   .quick-card {
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     padding: 1.5rem;
     border-radius: 12px;
     text-align: center;
     transition: all 0.3s ease;
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--border-color);
   }
 
   .quick-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 20px var(--shadow-color);
   }
 
   .quick-icon {
@@ -505,20 +504,19 @@
   .quick-title {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
   }
 
   .quick-description {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin-bottom: 1rem;
     line-height: 1.5;
   }
-
   /* CTA SECTION */
   .cta-section {
-    background: linear-gradient(135deg, #ff7b54 0%, #ff9a76 50%, #ffc947 100%);
+    background: var(--gradient-warm);
     color: white;
     padding: 3rem 0;
     text-align: center;
@@ -573,55 +571,52 @@
     padding: 1rem 2rem;
     font-size: 1.1rem;
   }
-
   .btn-primary {
-    background: #4299e1;
+    background: var(--primary-color);
     color: white;
   }
 
   .btn-primary:hover {
-    background: #3182ce;
+    background: var(--primary-dark);
     transform: translateY(-2px);
   }
 
   .btn-success {
-    background: #48bb78;
+    background: var(--success-color);
     color: white;
   }
-
   .btn-success:hover {
-    background: #38a169;
+    background: var(--success-color);
     transform: translateY(-2px);
   }
 
   .btn-info {
-    background: #4fd1c7;
+    background: var(--info-color);
     color: white;
   }
 
   .btn-info:hover {
-    background: #38b2ac;
+    background: var(--info-color);
     transform: translateY(-2px);
   }
 
   .btn-warning {
-    background: #ed8936;
+    background: var(--warning-color);
     color: white;
   }
 
   .btn-warning:hover {
-    background: #dd6b20;
+    background: var(--warning-color);
     transform: translateY(-2px);
   }
-
   .btn-outline-primary {
     background: transparent;
-    color: #4299e1;
-    border: 2px solid #4299e1;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
   }
 
   .btn-outline-primary:hover {
-    background: #4299e1;
+    background: var(--primary-color);
     color: white;
   }
 

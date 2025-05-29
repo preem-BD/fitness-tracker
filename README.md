@@ -92,6 +92,15 @@ Der Fitness Tracker ist eine vollständige Web-Anwendung zur Verwaltung von Fitn
 
 ## 🚀 Erweiterungen über Grundanforderungen
 
+### 🌙 Dark Mode System
+
+- Vollständiges Dark/Light Theme System mit localStorage Persistence
+- Svelte 5 Runes-basierte Theme State Management
+- Automatische System-Präferenz Erkennung (OS Dark Mode)
+- Smooth Transitions und CSS Custom Properties Architecture
+- Responsive Theme Toggle mit Accessibility Features
+- Umfassende CSS Variable System für alle UI Komponenten
+
 ### 🎯 Goals System
 
 - Vollständiges CRUD für Fitness-Ziele

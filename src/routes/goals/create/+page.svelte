@@ -172,7 +172,7 @@
 
         <!-- Unit -->
         <div class="form-group">
-          <label for="unit" class="required">Maßeinheit:</label>
+          <label for="unit" class="required">Masseinheit:</label>
           <input 
             type="text" 
             id="unit" 
@@ -379,27 +379,25 @@
     text-align: center;
     margin-bottom: 30px;
   }
-
   .page-header h1 {
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 10px;
   }
 
   .page-header p {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 1.1em;
   }
-
   /* Breadcrumb */
   .breadcrumb {
     margin-bottom: 30px;
     padding: 10px 0;
     font-size: 0.9em;
-    color: #666;
+    color: var(--text-secondary);
   }
 
   .breadcrumb a {
-    color: #667eea;
+    color: var(--primary);
     text-decoration: none;
   }
 
@@ -409,27 +407,26 @@
 
   .separator {
     margin: 0 10px;
-    color: #999;
+    color: var(--text-muted);
   }
 
   .current {
-    color: #333;
+    color: var(--text-primary);
     font-weight: 500;
   }
-
   /* 
     FORM STYLING - Identisch zu Exercise Create
   */
   .goal-form {
-    background: white;
+    background: var(--card-bg);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px var(--shadow-color);
     overflow: hidden;
   }
 
   .form-section {
     padding: 30px;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid var(--border-color);
   }
 
   .form-section:last-child {
@@ -438,9 +435,9 @@
 
   .form-section h2 {
     margin: 0 0 25px 0;
-    color: #333;
+    color: var(--text-primary);
     font-size: 1.4em;
-    border-bottom: 2px solid #667eea;
+    border-bottom: 2px solid var(--primary);
     padding-bottom: 10px;
   }
 
@@ -448,36 +445,36 @@
   .form-group {
     margin-bottom: 25px;
   }
-
   .form-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
-    color: #333;
+    color: var(--text-primary);
   }
 
   .form-group label.required::after {
     content: " *";
-    color: #dc3545;
+    color: var(--error);
   }
 
   .form-input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 16px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     transition: border-color 0.2s, box-shadow 0.2s;
   }
 
   .form-input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary-transparent, rgba(102, 126, 234, 0.2));
   }
-
   .form-input.error {
-    border-color: #dc3545;
+    border-color: var(--error);
     box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
   }
 
@@ -487,23 +484,21 @@
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
-
   /* Field Hints and Errors */
   .field-hint {
     display: block;
     margin-top: 5px;
     font-size: 0.9em;
-    color: #666;
+    color: var(--text-secondary);
   }
 
   .field-error {
     display: block;
     margin-top: 5px;
     font-size: 0.9em;
-    color: #dc3545;
+    color: var(--error);
     font-weight: 500;
   }
-
   /* Unit Suggestions */
   .unit-suggestions {
     margin-top: 10px;
@@ -511,7 +506,7 @@
 
   .suggestions-label {
     font-size: 0.9em;
-    color: #666;
+    color: var(--text-secondary);
     margin-right: 10px;
   }
 
@@ -522,30 +517,30 @@
   }
 
   .suggestion-btn {
-    background: #f8f9fa;
-    border: 1px solid #dee2e6;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 0.8em;
     cursor: pointer;
+    color: var(--text-primary);
     transition: all 0.2s;
   }
 
   .suggestion-btn:hover {
-    background: #e9ecef;
-    border-color: #adb5bd;
+    background: var(--bg-tertiary);
+    border-color: var(--text-muted);
   }
-
   /* Preview Section */
   .preview-section {
-    background: #f8f9fa;
+    background: var(--bg-secondary);
   }
 
   .goal-preview {
-    background: white;
+    background: var(--card-bg);
     border-radius: 8px;
     padding: 20px;
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--border-color);
   }
 
   .preview-header {
@@ -557,12 +552,12 @@
 
   .preview-title {
     margin: 0;
-    color: #333;
+    color: var(--text-primary);
     font-size: 1.3em;
   }
 
   .preview-type {
-    background: #667eea;
+    background: var(--primary);
     color: white;
     padding: 4px 12px;
     border-radius: 20px;
@@ -576,16 +571,16 @@
     justify-content: space-between;
     margin-bottom: 10px;
     padding: 8px 0;
-    border-bottom: 1px solid #f8f9fa;
+    border-bottom: 1px solid var(--border-color);
   }
 
   .preview-label {
     font-weight: 500;
-    color: #666;
+    color: var(--text-secondary);
   }
 
   .preview-value {
-    color: #333;
+    color: var(--text-primary);
     font-weight: 600;
   }
 
@@ -595,10 +590,9 @@
 
   .preview-text {
     margin: 5px 0 0 0;
-    color: #555;
+    color: var(--text-secondary);
     line-height: 1.5;
   }
-
   .preview-progress {
     margin-top: 20px;
   }
@@ -608,19 +602,19 @@
     justify-content: space-between;
     margin-bottom: 5px;
     font-size: 0.9em;
-    color: #666;
+    color: var(--text-secondary);
   }
 
   .progress-bar {
     height: 8px;
-    background: #e9ecef;
+    background: var(--bg-tertiary);
     border-radius: 4px;
     overflow: hidden;
   }
 
   .progress-fill {
     height: 100%;
-    background: #667eea;
+    background: var(--primary);
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -629,13 +623,12 @@
     color: white;
     font-weight: bold;
   }
-
   /* 
     FORM ACTIONS - Identisch zu Exercise Create
   */
   .form-actions {
     padding: 30px;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     display: flex;
     gap: 15px;
     justify-content: center;
@@ -643,7 +636,7 @@
   }
 
   .submit-btn {
-    background: #667eea;
+    background: var(--primary);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -653,20 +646,18 @@
     font-size: 1.1em;
     transition: all 0.2s;
   }
-
   .submit-btn:hover:not(:disabled) {
-    background: #5a67d8;
+    background: var(--primary-dark, #5a67d8);
     transform: translateY(-1px);
   }
 
   .submit-btn:disabled {
-    background: #6c757d;
+    background: var(--text-muted);
     cursor: not-allowed;
     transform: none;
   }
-
   .cancel-btn {
-    background: #6c757d;
+    background: var(--text-muted);
     color: white;
     padding: 15px 30px;
     border-radius: 6px;
@@ -676,7 +667,7 @@
   }
 
   .cancel-btn:hover {
-    background: #5a6268;
+    background: var(--text-secondary);
   }
 
   /* 

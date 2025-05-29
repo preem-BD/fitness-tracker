@@ -366,12 +366,12 @@
   }
 
   .page-header h1 {
-    color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    color: var(--text-primary);
   }
 
   .page-header p {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 1.1em;
   }
 
@@ -380,11 +380,12 @@
     Grid Layout für Stats-Cards
   */
   .stats-dashboard {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-primary);
     color: white;
-    padding: 30px;
-    border-radius: 12px;
+    padding: 25px;
+    border-radius: var(--radius-xl);
     margin-bottom: 30px;
+    box-shadow: var(--shadow-md);
   }
 
   .stats-dashboard h2 {
@@ -422,15 +423,16 @@
     Flexbox Layout für Filter-Controls
   */
   .filter-section {
-    background: #f8f9fa;
-    padding: 25px;
-    border-radius: 12px;
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: var(--radius-lg);
     margin-bottom: 30px;
   }
 
   .filter-section h2 {
+    color: var(--text-primary);
+    margin-top: 0;
     margin-bottom: 20px;
-    color: #333;
   }
 
   .filter-form {
@@ -446,11 +448,13 @@
   }
 
   .search-input {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.2s;
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
   }
 
   .search-input:focus {
@@ -472,16 +476,20 @@
   }
 
   .filter-group label {
+    display: block;
+    margin-bottom: 5px;
     font-weight: 500;
-    color: #333;
+    color: var(--text-primary);
   }
 
   .filter-select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background: white;
-    font-size: 14px;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
   }
 
   .filter-actions {
@@ -495,10 +503,10 @@
     color: white;
     border: none;
     padding: 12px 24px;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-weight: bold;
-    transition: background 0.2s;
+    font-weight: 600;
+    transition: background-color var(--transition-normal);
   }
 
   .apply-btn:hover {
@@ -510,7 +518,7 @@
     color: white;
     border: none;
     padding: 12px 24px;
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     cursor: pointer;
     transition: background 0.2s;
   }
@@ -530,9 +538,8 @@
 
   .exercises-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 25px;
-    margin-bottom: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
   }
 
   /* 
@@ -540,19 +547,17 @@
     Card Design mit Hover-Effekten
   */
   .exercise-card {
-    background: white;
-    border: 1px solid #e9ecef;
-    border-radius: 12px;
+    background-color: var(--card-bg);
+    border-radius: var(--radius-lg);
     padding: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    border: 1px solid var(--border-color);
   }
 
   .exercise-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
   }
 
   .exercise-header {
@@ -562,37 +567,34 @@
     margin-bottom: 15px;
   }
 
-  .exercise-name {
-    margin: 0;
-    color: #333;
-    font-size: 1.3em;
-    flex: 1;
+  .exercise-header h3 {
+    margin: 0 0 5px 0;
+    font-size: var(--font-size-lg);
+    color: var(--text-primary);
   }
 
   /* Difficulty Badges */
   .difficulty-badge {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8em;
-    font-weight: bold;
-    margin-left: 10px;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
   }
 
-  .difficulty-leicht { background: #d4edda; color: #155724; }
-  .difficulty-mittel { background: #fff3cd; color: #856404; }
-  .difficulty-schwer { background: #f8d7da; color: #721c24; }
+  .difficulty-leicht { background: var(--success-light); color: var(--success-dark); }
+  .difficulty-mittel { background: var(--warning-light); color: var(--warning-dark); }
+  .difficulty-schwer { background: var(--danger-light); color: var(--danger-dark); }
 
   .exercise-meta {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-    font-size: 0.9em;
-    color: #666;
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin-bottom: 12px;
   }
 
   .exercise-description {
-    color: #555;
+    font-size: var(--font-size-base);
     line-height: 1.5;
+    color: var(--text-secondary);
     margin-bottom: 15px;
   }
 
@@ -620,65 +622,75 @@
   .exercise-actions {
     display: flex;
     gap: 10px;
-    margin-bottom: 15px;
   }
 
-  .details-btn {
+  .view-btn {
     flex: 1;
-    background: #667eea;
+    background-color: var(--primary);
     color: white;
-    padding: 10px;
-    text-decoration: none;
-    border-radius: 6px;
+    padding: 8px;
     text-align: center;
-    font-size: 0.9em;
-    transition: background 0.2s;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-normal);
   }
 
-  .details-btn:hover {
-    background: #5a67d8;
+  .view-btn:hover {
+    background-color: var(--primary-dark);
   }
 
-  .add-to-workout-btn {
+  .save-btn {
     flex: 1;
-    background: #28a745;
+    background-color: var(--success);
     color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 6px;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: background-color var(--transition-normal);
+  }
+
+  .save-btn:hover {
+    background-color: var(--success-dark);
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 8px;
+  }
+
+  .page-btn {
+    padding: 8px 12px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 0.9em;
-    transition: background 0.2s;
+    transition: background-color var(--transition-normal);
   }
 
-  .add-to-workout-btn:hover {
-    background: #218838;
+  .page-btn:hover:not(.active) {
+    background-color: var(--bg-tertiary);
   }
 
-  /* Category Badge */
-  .category-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-  }
-
-  .category-tag {
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.7em;
+  .page-btn.active {
+    background-color: var(--primary);
     color: white;
-    font-weight: bold;
+    border-color: var(--primary);
   }
 
   /* Empty State */
   .empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: #666;
+    color: var(--text-secondary);
   }
 
   .empty-state h3 {
     margin-bottom: 15px;
+    color: var(--text-primary);
   }
 
   .create-btn {
@@ -719,10 +731,10 @@
 
   /* Error Banner */
   .error-banner {
-    background: #f8d7da;
-    color: #721c24;
+    background-color: var(--error-bg);
+    color: var(--error-text);
     padding: 15px;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
@@ -730,11 +742,11 @@
   }
 
   .error-banner button {
-    background: #721c24;
+    background-color: var(--error-text);
     color: white;
     border: none;
     padding: 8px 15px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
   }
 

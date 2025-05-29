@@ -428,6 +428,45 @@
 
 <!-- COMPONENT STYLES -->
 <style>
+    /* Base styles for dark mode compatibility */
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8f9fa;
+      --bg-tertiary: #e9ecef;
+      --text-primary: #212529;
+      --text-secondary: #6c757d;
+      --text-muted: #888888;
+      --primary: #0d6efd;
+      --primary-dark: #0a58ca;
+      --success: #4caf50;
+      --info: #2196f3;
+      --warning: #ff9800;
+      --danger: #f44336;
+      --border-color: #dee2e6;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    [data-theme="dark"] {
+      --bg-primary: #121212;
+      --bg-secondary: #1e1e1e;
+      --bg-tertiary: #2c2c2c;
+      --text-primary: #e0e0e0;
+      --text-secondary: #b0b0b0;
+      --text-muted: #888888;
+      --primary: #bb86fc;
+      --primary-dark: #9b59b6;
+      --success: #4caf50;
+      --info: #2196f3;
+      --warning: #ff9800;
+      --danger: #f44336;
+      --border-color: #333333;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+      --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
     /* Stats Cards */
     .stats-card {
         border: none;
@@ -595,6 +634,97 @@
         font-size: 0.9rem;
         margin: 0;
     }
+    
+    /* Subtle text colors */
+      .text-muted {
+        color: var(--text-muted);
+      }
+      
+      /* Progress bar styling */
+      .progress-container {
+        height: 8px;
+        background-color: var(--bg-tertiary);
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 5px 0;
+      }
+      
+      .progress-container-with-label {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .progress-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 3px;
+      }
+      
+      /* Table styling */
+      .stats-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+      
+      .stats-table th {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        padding: 0.75rem;
+        text-align: left;
+        font-weight: 600;
+        border-bottom: 2px solid var(--border-color);
+      }
+      
+      .stats-table td {
+        padding: 0.75rem;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-secondary);
+      }
+      
+      /* Color indicators for tags */
+      .color-tag {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+      
+      /* Button styles */
+      .action-btn {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.375rem 0.75rem;
+        font-weight: 500;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        color: var(--text-primary);
+        background-color: var(--bg-tertiary);
+      }
+      
+      .action-btn:hover {
+        color: var(--primary);
+      }
+      
+      .btn-primary {
+        background-color: var(--primary);
+        color: white;
+      }
+      
+      .btn-primary:hover {
+        background-color: var(--primary-dark);
+        color: white;
+      }
     
     /* Responsive Design */
     @media (max-width: 768px) {
