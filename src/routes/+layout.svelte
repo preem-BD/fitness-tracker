@@ -90,10 +90,10 @@
       console.log('🔍 Global Search aktiviert (Feature kommt später)');
     }
     
-    // Escape für Modal schließen
+    // Escape für Modal schliessen
     if (event.key === 'Escape') {
-      // Schließe alle offenen Modals/Dropdowns
-      console.log('⎋ Escape gedrückt - Schließe UI-Elemente');
+      // Schliesse alle offenen Modals/Dropdowns
+      console.log('⎋ Escape gedrückt - Schliesse UI-Elemente');
     }
   }
 

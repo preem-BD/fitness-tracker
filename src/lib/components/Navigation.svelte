@@ -20,7 +20,7 @@
       type="button" 
       class="mobile-toggle"
       onclick={toggleMobileMenu}
-      aria-label="Navigation öffnen/schließen"
+      aria-label="Navigation öffnen/schliessen"
     >
       <span class="hamburger-line"></span>
       <span class="hamburger-line"></span>
@@ -252,10 +252,14 @@
 
   </div>
 
-  <!-- Mobile Overlay -->
-  {#if isMobileMenuOpen}
-    <div class="mobile-overlay" onclick={closeMobileMenu}></div>
-  {/if}
+<div 
+  class="mobile-overlay" 
+  onclick={closeMobileMenu}
+  role="button"
+  tabindex="0"
+  onkeydown={(e) => e.key === 'Enter' && closeMobileMenu()}
+  aria-label="Schliesse Mobile Menu"
+></div>
 
 </nav>
 
@@ -307,7 +311,7 @@
   function toggleMobileMenu() {
     isMobileMenuOpen = !isMobileMenuOpen;
     
-    // Andere Dropdowns schließen
+    // Andere Dropdowns schliessen
     if (isMobileMenuOpen) {
       isWorkoutDropdownOpen = false;
       isExerciseDropdownOpen = false;
@@ -330,7 +334,7 @@
   function toggleWorkoutDropdown() {
     isWorkoutDropdownOpen = !isWorkoutDropdownOpen;
     
-    // Andere Dropdowns schließen
+    // Andere Dropdowns schliessen
     if (isWorkoutDropdownOpen) {
       isExerciseDropdownOpen = false;
       isGoalsDropdownOpen = false;
@@ -341,7 +345,7 @@
   function toggleExerciseDropdown() {
     isExerciseDropdownOpen = !isExerciseDropdownOpen;
     
-    // Andere Dropdowns schließen
+    // Andere Dropdowns schliessen
     if (isExerciseDropdownOpen) {
       isWorkoutDropdownOpen = false;
       isGoalsDropdownOpen = false;
@@ -352,7 +356,7 @@
   function toggleGoalsDropdown() {
     isGoalsDropdownOpen = !isGoalsDropdownOpen;
     
-    // Andere Dropdowns schließen
+    // Andere Dropdowns schliessen
     if (isGoalsDropdownOpen) {
       isWorkoutDropdownOpen = false;
       isExerciseDropdownOpen = false;
@@ -363,7 +367,7 @@
   function toggleQuickAdd() {
     isQuickAddOpen = !isQuickAddOpen;
     
-    // Andere Dropdowns schließen
+    // Andere Dropdowns schliessen
     if (isQuickAddOpen) {
       isWorkoutDropdownOpen = false;
       isExerciseDropdownOpen = false;
@@ -396,7 +400,7 @@
   
   // Route Change Effect
   $effect(() => {
-    // Schließe Dropdowns bei Route-Wechsel
+    // Schliesse Dropdowns bei Route-Wechsel
     if (currentPath) {
       closeMobileMenu();
       console.log('🧭 Navigation zu:', currentPath);
