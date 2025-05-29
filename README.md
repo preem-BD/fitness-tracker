@@ -1,4 +1,4 @@
-# README.md Template
+# README.md
 
 ## Fitness Tracker
 Moderne Fitness-App für Workout-, Exercise- und Goal-Management
