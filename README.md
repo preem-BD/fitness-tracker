@@ -88,6 +88,7 @@ Der Fitness Tracker ist eine vollständige Web-Anwendung zur Verwaltung von Fitn
 ### Mobile Responsive
 
 ![Mobile](mobile.PNG)
+
 *Vollständig responsive Design für alle Geräte*
 
 ## 🚀 Erweiterungen über Grundanforderungen
@@ -176,7 +177,6 @@ Automatisches Deployment über Netlify:
         App-Logo und Branding
 
     UI/UX Verbesserungen
-        Dark Mode Toggle
         Erweiterte Filter-Optionen
         Bulk-Actions für mehrere Entities
         Drag & Drop für Workout-Exercise Reihenfolge
