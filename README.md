@@ -244,7 +244,8 @@ Automatisches Deployment über Netlify:
 
 👨‍💻 Entwicklung
 ## Code-Struktur
-```
+
+```md
 src/
 ├── lib/
 │   ├── components/     # Wiederverwendbare Svelte Components
