@@ -402,7 +402,7 @@
 <style>
   .help-page {
     min-height: 100vh;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     padding: 2rem 0;
   }
 
@@ -420,7 +420,7 @@
   .page-title {
     font-size: 3rem;
     font-weight: bold;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -434,7 +434,7 @@
 
   .page-subtitle {
     font-size: 1.2rem;
-    color: #666;
+    color: var(--text-secondary);
     margin: 0;
   }
 
@@ -443,17 +443,17 @@
   }
 
   .content-card {
-    background: white;
+    background: var(--bg-primary);
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border: 1px solid #e9ecef;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
   }
 
   .section-title {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -465,7 +465,7 @@
   }
 
   .section-text {
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 1.5rem;
   }
@@ -482,18 +482,19 @@
     align-items: flex-start;
     gap: 1.5rem;
     padding: 1.5rem;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     border-radius: 12px;
     transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
   }
 
   .step-item:hover {
-    background: #e9ecef;
+    background: var(--bg-hover);
     transform: translateY(-2px);
   }
 
   .step-number {
-    background: #4299e1;
+    background: var(--primary-color);
     color: white;
     width: 40px;
     height: 40px;
@@ -513,18 +514,18 @@
   .step-title {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
   }
 
   .step-text {
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
     line-height: 1.5;
   }
 
   .step-link {
-    color: #4299e1;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
   }
@@ -541,7 +542,7 @@
   }
 
   .faq-item {
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     overflow: hidden;
   }
@@ -551,41 +552,41 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     cursor: pointer;
     transition: background 0.3s ease;
   }
 
   .faq-question:hover {
-    background: #e9ecef;
+    background: var(--bg-hover);
   }
 
   .question-text {
     margin: 0;
-    color: #333;
+    color: var(--text-primary);
     font-size: 1.1rem;
   }
 
   .question-toggle {
     font-size: 1.5rem;
-    color: #4299e1;
+    color: var(--primary-color);
     font-weight: bold;
   }
 
   .faq-answer {
     padding: 1rem;
-    background: white;
-    border-top: 1px solid #e9ecef;
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
   }
 
   .faq-answer p {
     margin: 0;
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.6;
   }
 
   .faq-answer a {
-    color: #4299e1;
+    color: var(--primary-color);
     text-decoration: none;
   }
 
@@ -605,8 +606,9 @@
     align-items: flex-start;
     gap: 1.5rem;
     padding: 1.5rem;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     border-radius: 12px;
+    border: 1px solid var(--border-color);
   }
 
   .feature-icon {
@@ -621,12 +623,12 @@
   .feature-title {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
   }
 
   .feature-description {
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
     line-height: 1.6;
   }
@@ -637,14 +639,15 @@
   }
 
   .feature-tips li {
-    color: #555;
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
     line-height: 1.5;
   }
 
   /* Tips */
   .tips-card {
-    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+    background: var(--warning-light);
+    border: 1px solid var(--warning-color);
   }
 
   .tips-grid {
@@ -654,10 +657,11 @@
   }
 
   .tip-item {
-    background: white;
+    background: var(--bg-primary);
     padding: 1.5rem;
     border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
   }
 
   .tip-icon {
@@ -669,12 +673,12 @@
   .tip-title {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
   }
 
   .tip-text {
-    color: #666;
+    color: var(--text-secondary);
     margin: 0;
     line-height: 1.6;
   }
@@ -691,31 +695,32 @@
     align-items: center;
     gap: 1rem;
     padding: 1.5rem;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     border-radius: 8px;
     text-decoration: none;
     color: inherit;
     transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
   }
 
   .support-option:hover {
-    background: #e9ecef;
+    background: var(--bg-hover);
     transform: translateY(-2px);
   }
 
   .support-icon {
     font-size: 2rem;
-    color: #4299e1;
+    color: var(--primary-color);
   }
 
   .support-title {
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 0.2rem;
   }
 
   .support-text {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin: 0;
   }
@@ -728,15 +733,16 @@
   }
 
   .requirement-item {
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     padding: 1.5rem;
     border-radius: 8px;
+    border: 1px solid var(--border-color);
   }
 
   .requirement-title {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1rem;
   }
 
@@ -746,7 +752,7 @@
   }
 
   .requirement-list li {
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
   }
 

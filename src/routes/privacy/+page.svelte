@@ -258,7 +258,7 @@
 <style>
   .privacy-page {
     min-height: 100vh;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     padding: 2rem 0;
   }
 
@@ -276,7 +276,7 @@
   .page-title {
     font-size: 3rem;
     font-weight: bold;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -290,13 +290,13 @@
 
   .page-subtitle {
     font-size: 1.2rem;
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
   }
 
   .last-updated {
-    background: #e3f2fd;
-    color: #1976d2;
+    background: var(--info-light);
+    color: var(--info-dark);
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: 0.9rem;
@@ -308,17 +308,17 @@
   }
 
   .content-card {
-    background: white;
+    background: var(--bg-primary);
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border: 1px solid #e9ecef;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
   }
 
   .section-title {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -330,17 +330,17 @@
   }
 
   .section-text {
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 1.5rem;
   }
 
   .highlight-box {
-    background: #e8f5e8;
-    border-left: 4px solid #4caf50;
+    background: var(--success-light);
+    border-left: 4px solid var(--success-color);
     padding: 1rem;
     border-radius: 0 8px 8px 0;
-    color: #2e7d32;
+    color: var(--success-dark);
   }
 
   .data-category {
@@ -350,7 +350,7 @@
   .category-title {
     font-size: 1.3rem;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1rem;
   }
 
@@ -361,13 +361,13 @@
 
   .data-list li {
     padding: 0.5rem 0;
-    border-bottom: 1px solid #f0f0f0;
-    color: #666;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
   }
 
   .data-list li:before {
     content: "→ ";
-    color: #4299e1;
+    color: var(--primary-color);
     font-weight: bold;
   }
 
@@ -380,9 +380,10 @@
   .usage-item {
     text-align: center;
     padding: 1.5rem;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     border-radius: 12px;
     transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
   }
 
   .usage-item:hover {
@@ -397,12 +398,12 @@
   .usage-title {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
   }
 
   .usage-text {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin: 0;
   }
@@ -418,8 +419,9 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     border-radius: 8px;
+    border: 1px solid var(--border-color);
   }
 
   .security-icon {
@@ -427,7 +429,7 @@
   }
 
   .security-text {
-    color: #555;
+    color: var(--text-secondary);
     font-weight: 500;
   }
 
@@ -439,45 +441,47 @@
 
   .right-item {
     padding: 1.5rem;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     border-radius: 8px;
+    border: 1px solid var(--border-color);
   }
 
   .right-title {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
   }
 
   .right-text {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin: 0;
   }
 
   .no-sharing {
-    background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
-    border: 2px solid #4caf50;
+    background: var(--success-light);
+    border: 2px solid var(--success-color);
   }
 
   .guarantee-box {
     display: flex;
     align-items: center;
     gap: 1rem;
-    background: white;
+    background: var(--bg-primary);
     padding: 1.5rem;
     border-radius: 8px;
     margin-top: 1rem;
+    border: 1px solid var(--border-color);
   }
 
   .guarantee-icon {
     font-size: 2rem;
-    color: #4caf50;
+    color: var(--success-color);
   }
 
   .guarantee-text {
-    color: #2e7d32;
+    color: var(--success-dark);
     font-weight: 500;
   }
 
@@ -492,8 +496,9 @@
     align-items: flex-start;
     gap: 1rem;
     padding: 1rem;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     border-radius: 8px;
+    border: 1px solid var(--border-color);
   }
 
   .contact-icon {
@@ -502,7 +507,7 @@
   }
 
   .contact-details a {
-    color: #4299e1;
+    color: var(--primary-color);
     text-decoration: none;
   }
 

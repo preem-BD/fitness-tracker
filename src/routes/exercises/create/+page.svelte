@@ -819,27 +819,25 @@
     text-align: center;
     margin-bottom: 30px;
   }
-
   .page-header h1 {
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 10px;
   }
 
   .page-header p {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 1.1em;
   }
-
   /* Breadcrumb */
   .breadcrumb {
     margin-bottom: 30px;
     padding: 10px 0;
     font-size: 0.9em;
-    color: #666;
+    color: var(--text-secondary);
   }
 
   .breadcrumb a {
-    color: #667eea;
+    color: var(--primary-color);
     text-decoration: none;
   }
 
@@ -849,28 +847,28 @@
 
   .separator {
     margin: 0 10px;
-    color: #999;
+    color: var(--text-muted);
   }
 
   .current {
-    color: #333;
+    color: var(--text-primary);
     font-weight: 500;
   }
 
   /* 
     FORM STYLING
     Professionelles Form-Design
-  */
-  .exercise-form {
-    background: white;
+  */  .exercise-form {
+    background: var(--bg-primary);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-md);
     overflow: hidden;
+    border: 1px solid var(--border-color);
   }
 
   .form-section {
     padding: 30px;
-    border-bottom: 1px solid #e9ecef;
+    border-bottom: 1px solid var(--border-color);
   }
 
   .form-section:last-child {
@@ -879,9 +877,9 @@
 
   .form-section h2 {
     margin: 0 0 25px 0;
-    color: #333;
+    color: var(--text-primary);
     font-size: 1.4em;
-    border-bottom: 2px solid #667eea;
+    border-bottom: 2px solid var(--primary-color);
     padding-bottom: 10px;
   }
 
@@ -889,36 +887,37 @@
   .form-group {
     margin-bottom: 25px;
   }
-
   .form-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
-    color: #333;
+    color: var(--text-primary);
   }
 
   .label.required::after {
     content: " *";
-    color: #dc3545;
+    color: var(--danger-color);
   }
 
   .form-input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 16px;
     transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
   }
 
   .form-input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-transparent);
   }
 
   .form-input.error {
-    border-color: #dc3545;
+    border-color: var(--danger-color);
     box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
   }
 
@@ -929,19 +928,18 @@
     gap: 20px;
   }
 
-  /* Field Hints and Errors */
-  .field-hint {
+  /* Field Hints and Errors */  .field-hint {
     display: block;
     margin-top: 5px;
     font-size: 0.9em;
-    color: #666;
+    color: var(--text-secondary);
   }
 
   .field-error {
     display: block;
     margin-top: 5px;
     font-size: 0.9em;
-    color: #dc3545;
+    color: var(--danger-color);
     font-weight: 500;
   }
 
@@ -964,12 +962,11 @@
   .dynamic-item .form-input {
     flex: 1;
   }
-
   .variation-item {
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     padding: 15px;
     border-radius: 8px;
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--border-color);
   }
 
   .variation-inputs {
@@ -978,10 +975,9 @@
     gap: 10px;
     margin-bottom: 10px;
   }
-
   /* Buttons */
   .add-btn {
-    background: #28a745;
+    background: var(--success-color);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -993,11 +989,11 @@
   }
 
   .add-btn:hover {
-    background: #218838;
+    background: var(--success-dark);
   }
 
   .remove-btn {
-    background: #dc3545;
+    background: var(--danger-color);
     color: white;
     border: none;
     padding: 8px 12px;
@@ -1009,11 +1005,11 @@
   }
 
   .remove-btn:hover:not(:disabled) {
-    background: #c82333;
+    background: var(--danger-dark);
   }
 
   .remove-btn:disabled {
-    background: #6c757d;
+    background: var(--gray-600);
     cursor: not-allowed;
   }
 
@@ -1029,18 +1025,18 @@
   /* 
     FORM ACTIONS
     Submit Button Area
-  */
-  .form-actions {
+  */  .form-actions {
     padding: 30px;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     display: flex;
     gap: 15px;
     justify-content: center;
     flex-wrap: wrap;
+    border-top: 1px solid var(--border-color);
   }
 
   .submit-btn {
-    background: #667eea;
+    background: var(--primary-color);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -1052,19 +1048,19 @@
   }
 
   .submit-btn:hover:not(:disabled) {
-    background: #5a67d8;
+    background: var(--primary-dark);
     transform: translateY(-1px);
   }
 
   .submit-btn:disabled {
-    background: #6c757d;
+    background: var(--gray-600);
     cursor: not-allowed;
     transform: none;
   }
 
   .preview-btn {
-    background: #ffc107;
-    color: #212529;
+    background: var(--warning-color);
+    color: white;
     border: none;
     padding: 15px 30px;
     border-radius: 6px;
@@ -1074,11 +1070,11 @@
   }
 
   .preview-btn:hover {
-    background: #e0a800;
+    background: var(--warning-dark);
   }
 
   .cancel-btn {
-    background: #6c757d;
+    background: var(--gray-600);
     color: white;
     padding: 15px 30px;
     border-radius: 6px;
@@ -1088,16 +1084,15 @@
   }
 
   .cancel-btn:hover {
-    background: #5a6268;
+    background: var(--gray-700);
   }
 
   /* 
     BANNERS für Feedback
-  */
-  .error-banner {
-    background: #f8d7da;
-    border: 1px solid #f5c6cb;
-    color: #721c24;
+  */  .error-banner {
+    background: var(--error-bg);
+    border: 1px solid var(--error-light);
+    color: var(--error-text);
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -1119,9 +1114,9 @@
   }
 
   .success-banner {
-    background: #d4edda;
-    border: 1px solid #c3e6cb;
-    color: #155724;
+    background: var(--success-bg);
+    border: 1px solid var(--success-light);
+    color: var(--success-text);
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;

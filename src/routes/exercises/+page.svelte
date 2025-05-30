@@ -526,14 +526,13 @@
   .clear-btn:hover {
     background: #5a6268;
   }
-
   /* 
     EXERCISES GRID
     Responsive Card Layout
   */
   .exercises-section h2 {
     margin-bottom: 25px;
-    color: #333;
+    color: var(--text-primary);
   }
 
   .exercises-grid {
@@ -597,61 +596,87 @@
     color: var(--text-secondary);
     margin-bottom: 15px;
   }
-
   .instructions-preview {
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
+    border: 1px solid var(--border-color);
   }
 
   .instructions-preview h4 {
     margin: 0 0 8px 0;
-    color: #333;
+    color: var(--text-primary);
     font-size: 0.9em;
   }
 
   .instructions-preview p {
     margin: 0;
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9em;
     line-height: 1.4;
-  }
-
-  /* Exercise Actions */
+  }  /* Exercise Actions */
   .exercise-actions {
     display: flex;
     gap: 10px;
+    margin-bottom: 0;
   }
 
-  .view-btn {
+  .details-btn {
     flex: 1;
-    background-color: var(--primary);
+    background-color: var(--primary-color);
     color: white;
-    padding: 8px;
+    padding: 10px 16px;
     text-align: center;
     text-decoration: none;
     border-radius: var(--radius-md);
-    transition: background-color var(--transition-normal);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    border: none;
+    cursor: pointer;
   }
 
-  .view-btn:hover {
-    background-color: var(--primary-dark);
+  .details-btn:hover {
+    background-color: var(--primary-dark-color);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
 
-  .save-btn {
+  .add-to-workout-btn {
     flex: 1;
-    background-color: var(--success);
+    background-color: var(--success-color);
     color: white;
-    padding: 8px;
+    padding: 10px 16px;
     text-align: center;
-    text-decoration: none;
     border-radius: var(--radius-md);
-    transition: background-color var(--transition-normal);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    border: none;
+    cursor: pointer;
+  }
+  .add-to-workout-btn:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
 
-  .save-btn:hover {
-    background-color: var(--success-dark);
+  /* Category Badge */
+  .category-badge {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .category-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+    color: white;
+    opacity: 0.9;
   }
 
   .pagination {
@@ -692,9 +717,8 @@
     margin-bottom: 15px;
     color: var(--text-primary);
   }
-
   .create-btn {
-    background: #28a745;
+    background: var(--success-color);
     color: white;
     padding: 12px 24px;
     text-decoration: none;
@@ -702,6 +726,11 @@
     display: inline-block;
     margin-top: 20px;
     font-weight: bold;
+    transition: background-color var(--transition-normal);
+  }
+
+  .create-btn:hover {
+    background: var(--success-dark);
   }
 
   /* Floating Action Button */
@@ -711,7 +740,7 @@
     right: 30px;
     width: 60px;
     height: 60px;
-    background: #ff3e00;
+    background: var(--primary-color);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -719,14 +748,14 @@
     justify-content: center;
     font-size: 24px;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(255, 62, 0, 0.3);
+    box-shadow: var(--shadow-lg);
     transition: all 0.2s;
     z-index: 1000;
   }
 
   .fab:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(255, 62, 0, 0.4);
+    box-shadow: var(--shadow-xl);
   }
 
   /* Error Banner */

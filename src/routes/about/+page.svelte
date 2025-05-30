@@ -186,7 +186,7 @@
 <style>
   .about-page {
     min-height: 100vh;
-    background: #f8f9fa;
+    background: var(--bg-primary);
     padding: 2rem 0;
   }
 
@@ -204,7 +204,7 @@
   .page-title {
     font-size: 3rem;
     font-weight: bold;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -218,7 +218,7 @@
 
   .page-subtitle {
     font-size: 1.2rem;
-    color: #666;
+    color: var(--text-secondary);
     margin: 0;
   }
 
@@ -227,17 +227,17 @@
   }
 
   .content-card {
-    background: white;
+    background: var(--bg-primary);
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border: 1px solid #e9ecef;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
   }
 
   .section-title {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -249,7 +249,7 @@
   }
 
   .section-text {
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 1.5rem;
   }
@@ -265,8 +265,9 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     border-radius: 8px;
+    border: 1px solid var(--border-color);
   }
 
   .feature-icon {
@@ -274,7 +275,7 @@
   }
 
   .feature-text {
-    color: #555;
+    color: var(--text-primary);
     font-weight: 500;
   }
 
@@ -287,13 +288,14 @@
   .tech-item {
     text-align: center;
     padding: 1rem;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     border-radius: 8px;
+    border: 1px solid var(--border-color);
   }
 
   .tech-badge {
     display: inline-block;
-    background: #4299e1;
+    background: var(--primary-color);
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 20px;
@@ -302,7 +304,7 @@
   }
 
   .tech-description {
-    color: #666;
+    color: var(--text-secondary);
     font-size: 0.9rem;
     margin: 0;
   }
@@ -314,7 +316,7 @@
   }
 
   .info-item {
-    color: #555;
+    color: var(--text-primary);
     line-height: 1.5;
   }
 
@@ -346,8 +348,9 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem;
-    background: #f8f9fa;
+    background: var(--bg-secondary);
     border-radius: 8px;
+    border: 1px solid var(--border-color);
   }
 
   .contact-icon {
@@ -355,7 +358,7 @@
   }
 
   .contact-item a {
-    color: #4299e1;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
   }
@@ -384,12 +387,12 @@
   }
 
   .btn-primary {
-    background: #4299e1;
+    background: var(--primary-color);
     color: white;
   }
 
   .btn-primary:hover {
-    background: #3182ce;
+    background: var(--primary-dark-color);
     transform: translateY(-2px);
   }
 

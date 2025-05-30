@@ -286,44 +286,44 @@ let { form } = $props();
   /* 
     FORM LAYOUT mit CSS GRID und FLEXBOX
     Responsive Design für verschiedene Bildschirmgrößen
-  */
-  .workout-form {
+  */  .workout-form {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background: white;
+    background: var(--bg-primary);
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
   }
 
   .form-group {
     margin-bottom: 20px;
   }
-
   .form-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #333;
+    color: var(--text-primary);
   }
 
   /* 
     INPUT STYLING
     Einheitliches Design für alle Form-Elemente
-  */
-  .form-input {
+  */  .form-input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     font-size: 16px;
     transition: border-color 0.2s;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
   }
 
   .form-input:focus {
     outline: none;
-    border-color: #ff3e00;
-    box-shadow: 0 0 0 2px rgba(255, 62, 0, 0.2);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px var(--primary-transparent);
   }
 
   .form-input.small {
@@ -334,20 +334,20 @@ let { form } = $props();
   /* 
     EXERCISES SECTION STYLING
     Layout für dynamische Übungen-Eingabe
-  */
-  .exercises-section {
-    background: #f8f9fa;
+  */  .exercises-section {
+    background: var(--bg-secondary);
     padding: 20px;
     border-radius: 8px;
     margin: 20px 0;
+    border: 1px solid var(--border-color);
   }
 
   .exercise-input-group {
-    background: white;
+    background: var(--bg-primary);
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 6px;
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--border-color);
   }
 
   .exercise-inputs {
@@ -360,25 +360,34 @@ let { form } = $props();
   /* 
     BUTTON STYLING
     Verschiedene Button-Typen für verschiedene Actions
-  */
-  .add-btn {
-    background: #28a745;
+  */  .add-btn {
+    background: var(--success-color);
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
+    transition: background-color var(--transition-normal);
+  }
+
+  .add-btn:hover {
+    background: var(--success-dark);
   }
 
   .remove-btn {
-    background: #dc3545;
+    background: var(--danger-color);
     color: white;
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 12px;
+    transition: background-color var(--transition-normal);
+  }
+
+  .remove-btn:hover {
+    background: var(--danger-dark);
   }
 
   .form-actions {
@@ -387,9 +396,8 @@ let { form } = $props();
     justify-content: center;
     margin-top: 30px;
   }
-
   .submit-btn {
-    background: #ff3e00;
+    background: var(--primary-color);
     color: white;
     border: none;
     padding: 15px 30px;
@@ -397,15 +405,25 @@ let { form } = $props();
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
+    transition: background-color var(--transition-normal);
+  }
+
+  .submit-btn:hover {
+    background: var(--primary-dark);
   }
 
   .cancel-btn {
-    background: #6c757d;
+    background: var(--gray-600);
     color: white;
     padding: 15px 30px;
     border-radius: 6px;
     text-decoration: none;
     display: inline-block;
+    transition: background-color var(--transition-normal);
+  }
+
+  .cancel-btn:hover {
+    background: var(--gray-700);
   }
 
   /* 
