@@ -166,24 +166,13 @@
               📋 Alle Ziele
             </a>
           </li>
-          <li>
-            <a 
+          <li>            <a 
               href="/goals/create" 
               class="dropdown-link"
               class:active={currentPath === '/goals/create'}
               onclick={closeMobileMenu}
             >
               ➕ Neues Ziel
-            </a>
-          </li>
-          <li class="dropdown-divider"></li>
-          <li>
-            <a 
-              href="/goals/stats" 
-              class="dropdown-link"
-              onclick={closeMobileMenu}
-            >
-              📊 Ziel-Statistiken
             </a>
           </li>
         </ul>
