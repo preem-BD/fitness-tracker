@@ -228,17 +228,11 @@
             <a href="/exercises/create" class="action-link" onclick={closeMobileMenu}>
               🏋️ Neue Exercise
             </a>
-          </li>
-          <li>
+          </li>          <li>
             <a href="/goals/create" class="action-link" onclick={closeMobileMenu}>
               🎯 Neues Ziel
             </a>
-          </li>
-          <li>
-            <a href="/sessions/quick-start" class="action-link" onclick={closeMobileMenu}>
-              🚀 Quick Workout
-            </a>
-          </li>        </ul>      </div>      
+          </li></ul>      </div>      
       
       <!-- Theme Toggle -->
       <button 
