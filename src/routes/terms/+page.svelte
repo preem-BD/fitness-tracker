@@ -386,28 +386,35 @@
     box-shadow: var(--shadow-md);
   }
 
-  .page-header h1 {
+  .page-title {
     color: var(--text-primary);
     margin: 0 0 10px 0;
     font-size: 2.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
   }
 
-  .subtitle {
+  .page-icon {
+    font-size: 1.2em;
+  }
+
+  .page-subtitle {
     color: var(--text-secondary);
-    margin: 0;
+    margin: 0 0 10px 0;
+    font-size: 1.1rem;
+  }
+
+  .last-updated {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-style: italic;
   }
 
   /* CONTENT SECTIONS */
-  .content {
-    background: var(--bg-primary);
-    border-radius: 12px;
-    box-shadow: var(--shadow-md);
-    overflow: hidden;
-  }
-
   .content-section {
-    padding: 30px;
-    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 30px;
   }
 
   .content-card {
@@ -439,11 +446,11 @@
   }
 
   .highlight-box {
-    background: var(--highlight-bg);
-    border-left: 4px solid var(--highlight-color);
+    background: var(--warning-light);
+    border-left: 4px solid var(--warning-color);
     padding: 1rem;
     border-radius: 0 8px 8px 0;
-    color: var(--highlight-text);
+    color: var(--text-primary);
   }
 
   .service-grid {
@@ -632,7 +639,7 @@
   }
 
   .contact-link:hover {
-    background: var(--hover-bg);
+    background: var(--bg-secondary);
     transform: translateY(-2px);
   }
 
@@ -680,8 +687,12 @@
 
   /* Responsive */
   @media (max-width: 768px) {
+    .terms-page {
+      padding: 15px;
+    }
+
     .page-title {
-      font-size: 2.5rem;
+      font-size: 1.8rem;
       flex-direction: column;
       gap: 0.5rem;
     }
@@ -700,5 +711,100 @@
       flex-direction: column;
       text-align: center;
     }
+
+    .benefit-item,
+    .update-item {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
+    }
+
+    .contact-link {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
+    }
   }
 </style>
+
+<script>
+  /* 
+    SVELTE 5 RUNES für TERMS PAGE
+    Moderne State Management für Terms/AGB Seite
+  */
+
+  // SvelteKit Navigation Import (falls benötigt)
+  import { goto } from '$app/navigation';
+
+  /* 
+    SVELTE 5 STATE für Interactive Features
+    Page-spezifische State Variablen
+  */
+  let isLoading = $state(false);
+  let showFullTerms = $state(true);
+
+  /* 
+    DERIVED VALUES (Svelte 5)
+    Berechnete Werte für UI-Elemente
+  */
+  let currentDate = $derived(new Date().toLocaleDateString('de-DE'));
+  let lastUpdated = $derived('29. Mai 2025');
+
+  /* 
+    INTERACTIVE FUNCTIONS
+    Event Handlers für User-Interaktionen
+  */
+  
+  // GitHub Repository öffnen
+  function openGitHub() {
+    console.log('🐙 GitHub Repository wird geöffnet...');
+    window.open('https://github.com/preem-BD/fitness-tracker', '_blank', 'noopener,noreferrer');
+  }
+
+  // GitHub Issues öffnen
+  function openIssues() {
+    console.log('🐛 GitHub Issues wird geöffnet...');
+    window.open('https://github.com/preem-BD/fitness-tracker/issues', '_blank', 'noopener,noreferrer');
+  }
+
+  // Scroll to Top Funktion
+  function scrollToTop() {
+    window.scrollTo({ 
+      top: 0, 
+      behavior: 'smooth' 
+    });
+  }
+
+  /* 
+    SVELTE 5 EFFECTS
+    Side Effects für Analytics und Debugging
+  */
+  
+  // Page View Analytics (simuliert)
+  $effect(() => {
+    console.log('📄 Terms Page besucht:', {
+      timestamp: new Date().toISOString(),
+      showFullTerms,
+      userAgent: navigator.userAgent
+    });
+  });
+
+  // Scroll Position Tracking
+  $effect(() => {
+    if (typeof window !== 'undefined') {
+      function handleScroll() {
+        const scrollPosition = window.scrollY;
+        if (scrollPosition > 500) {
+          // Zeige "Back to Top" Button (falls implementiert)
+          console.log('📜 User hat weit gescrollt - Terms gelesen');
+        }
+      }
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }
+  });
+</script>
