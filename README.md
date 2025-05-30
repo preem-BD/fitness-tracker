@@ -243,18 +243,47 @@ Automatisches Deployment über Netlify:
         Database Backup Strategy
 
 👨‍💻 Entwicklung
-Code-Struktur
+## Code-Struktur
+```
 src/
 ├── lib/
 │   ├── components/     # Wiederverwendbare Svelte Components
+│   │   ├── Navigation.svelte      # Hauptnavigation mit Theme Toggle
+│   │   └── ThemeToggle.svelte     # Dark/Light Mode Toggle
 │   ├── database/       # MongoDB Models und Connection
+│   │   ├── mongodb.js             # Database Connection
+│   │   └── models/                # Data Models
 │   └── styles/         # Global CSS und Themes
+│       └── global.css             # CSS Custom Properties & Theme System
 ├── routes/
-│   ├── workouts/       # Workout CRUD Pages
-│   ├── exercises/      # Exercise CRUD Pages
-│   ├── goals/          # Goals CRUD Pages
-│   └── stats/          # Statistics Dashboard
-└── app.html            # Main HTML Template
+│   ├── +layout.svelte             # App Layout mit Navigation
+│   ├── +page.svelte               # Landing Page
+│   ├── workouts/                  # Workout CRUD Pages
+│   │   ├── +page.server.js        # Server-side Data Loading
+│   │   ├── +page.svelte           # Workouts Overview
+│   │   ├── create/                # Workout Creation
+│   │   └── [id]/                  # Individual Workout Details
+│   ├── exercises/                 # Exercise CRUD Pages
+│   │   ├── +page.server.js        # Exercise Data & Filtering
+│   │   ├── +page.svelte           # Exercise Database
+│   │   ├── create/                # Exercise Creation
+│   │   └── [id]/                  # Exercise Details & Edit
+│   ├── goals/                     # Goals CRUD Pages
+│   │   ├── +page.server.js        # Goals Data Management
+│   │   ├── +page.svelte           # Goals Dashboard
+│   │   ├── create/                # Goal Creation
+│   │   └── [id]/                  # Goal Details & Progress
+│   ├── sessions/                  # Training Sessions (Coming Soon)
+│   │   └── +page.svelte           # Coming Soon Page with Roadmap
+│   ├── stats/                     # Statistics Dashboard
+│   │   ├── +page.server.js        # MongoDB Aggregation Pipelines
+│   │   └── +page.svelte           # Analytics & Visualizations
+│   ├── about/                     # About Page
+│   ├── help/                      # Help & Support
+│   ├── privacy/                   # Privacy Policy
+│   └── terms/                     # Terms of Service
+└── app.html                       # Main HTML Template
+```
 
 Development Guidelines
 

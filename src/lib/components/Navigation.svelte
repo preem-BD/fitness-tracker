@@ -233,13 +233,11 @@
       >
         <span class="action-icon">{$themeIcon}</span>
         <span class="action-text">{$isDarkMode ? 'Light' : 'Dark'}</span>
-      </button>
-
-      <!-- User Menu (für später) -->
-      <button type="button" class="action-btn user-btn">
+      </button>      <!-- User Menu (Coming Soon - redirects to Sessions) -->
+      <a href="/sessions" class="action-btn user-btn" onclick={closeMobileMenu}>
         <span class="action-icon">👤</span>
         <span class="action-text">Profil</span>
-      </button>
+      </a>
 
     </div>
 
