@@ -83,63 +83,75 @@
         
         <div class="faq-list">
           <div class="faq-item">
-            <div class="faq-question">
+            <div class="faq-question" onclick={() => toggleFaq(0)}>
               <h4 class="question-text">🏋️ Wie erstelle ich ein effektives Workout?</h4>
-              <span class="question-toggle">+</span>
+              <span class="question-toggle">{openFaqs[0] ? '−' : '+'}</span>
             </div>
+            {#if openFaqs[0]}
             <div class="faq-answer">
               <p>Ein gutes Workout sollte verschiedene Muskelgruppen ansprechen und zu deinem Fitnesslevel passen. Nutze unsere Exercise-Datenbank, um passende Übungen zu finden, und plane 3-4 Übungen pro Workout mit jeweils 3-4 Sets.</p>
             </div>
+            {/if}
           </div>
           
           <div class="faq-item">
-            <div class="faq-question">
+            <div class="faq-question" onclick={() => toggleFaq(1)}>
               <h4 class="question-text">🎯 Wie setze ich realistische Goals?</h4>
-              <span class="question-toggle">+</span>
+              <span class="question-toggle">{openFaqs[1] ? '−' : '+'}</span>
             </div>
+            {#if openFaqs[1]}
             <div class="faq-answer">
               <p>Setze dir SMART-Ziele: Spezifisch, Messbar, Erreichbar, Relevant und Zeitgebunden. Beispiel: "Ich möchte in 8 Wochen 10 Liegestütze am Stück schaffen" statt "Ich möchte stärker werden".</p>
             </div>
+            {/if}
           </div>
           
           <div class="faq-item">
-            <div class="faq-question">
+            <div class="faq-question" onclick={() => toggleFaq(2)}>
               <h4 class="question-text">📊 Was bedeuten die Statistiken?</h4>
-              <span class="question-toggle">+</span>
+              <span class="question-toggle">{openFaqs[2] ? '−' : '+'}</span>
             </div>
+            {#if openFaqs[2]}
             <div class="faq-answer">
               <p>Die Statistiken zeigen deinen Trainingsfortschritt über Zeit. Du siehst abgeschlossene Workouts, erreichte Goals und deine aktivsten Trainingstage. Diese Daten helfen dir, deine Erfolge zu verfolgen und Motivation zu behalten.</p>
             </div>
+            {/if}
           </div>
           
           <div class="faq-item">
-            <div class="faq-question">
+            <div class="faq-question" onclick={() => toggleFaq(3)}>
               <h4 class="question-text">💾 Werden meine Daten gespeichert?</h4>
-              <span class="question-toggle">+</span>
+              <span class="question-toggle">{openFaqs[3] ? '−' : '+'}</span>
             </div>
+            {#if openFaqs[3]}
             <div class="faq-answer">
               <p>Ja, alle deine Workouts, Goals und Trainingsfortschritte werden sicher in der Datenbank gespeichert. Du kannst jederzeit auf deine Daten zugreifen. Mehr Details findest du in unserer <a href="/privacy">Datenschutzerklärung</a>.</p>
             </div>
+            {/if}
           </div>
           
           <div class="faq-item">
-            <div class="faq-question">
+            <div class="faq-question" onclick={() => toggleFaq(4)}>
               <h4 class="question-text">📱 Ist die App mobilfreundlich?</h4>
-              <span class="question-toggle">+</span>
+              <span class="question-toggle">{openFaqs[4] ? '−' : '+'}</span>
             </div>
+            {#if openFaqs[4]}
             <div class="faq-answer">
               <p>Absolut! Fitness Tracker ist vollständig responsive und funktioniert perfekt auf Smartphones, Tablets und Desktop-Computern. Du kannst die App auf allen Geräten nutzen.</p>
             </div>
+            {/if}
           </div>
           
           <div class="faq-item">
-            <div class="faq-question">
+            <div class="faq-question" onclick={() => toggleFaq(5)}>
               <h4 class="question-text">🔄 Kann ich Workouts bearbeiten?</h4>
-              <span class="question-toggle">+</span>
+              <span class="question-toggle">{openFaqs[5] ? '−' : '+'}</span>
             </div>
+            {#if openFaqs[5]}
             <div class="faq-answer">
               <p>Ja, du kannst jederzeit deine Workouts und Goals bearbeiten. Klicke einfach auf ein bestehendes Workout oder Goal und wähle "Bearbeiten". So kannst du deine Pläne an deine Fortschritte anpassen.</p>
             </div>
+            {/if}
           </div>
         </div>
       </div>
@@ -398,6 +410,21 @@
 
   </div>
 </div>
+
+<script>
+  /*
+    SVELTE 5 RUNES - FAQ Interactive Functionality
+    Modern reactive state management for help page
+  */
+  
+  // FAQ state management using Svelte 5 runes
+  let openFaqs = $state([false, false, false, false, false, false]);
+  
+  // Toggle FAQ function with reactive updates
+  function toggleFaq(index) {
+    openFaqs[index] = !openFaqs[index];
+  }
+</script>
 
 <style>
   .help-page {

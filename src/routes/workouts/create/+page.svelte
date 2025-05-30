@@ -12,7 +12,7 @@
   - Funktioniert auch ohne JavaScript (Progressive Enhancement)
   - action="?/create" ruft die 'create' Form Action auf
 -->
-<form method="POST" action="?/create" class="workout-form">
+<form method="POST" action="?/create" class="workout-form" use:enhance={handleSubmit}>
   
   <!-- 
     BASIC INPUT FIELDS
@@ -215,10 +215,9 @@
   // SvelteKit Form Actions Import
   import { enhance } from '$app/forms';
   import { goto } from '$app/navigation';
-
   // $props() für Component Props (Ersetzt export let in Svelte 5)
   // form kommt von SvelteKit Form Actions bei Validation Errors
-let { form } = $props();
+  let { form } = $props();
 
   // $state() für Form-Daten (Svelte 5 Reactivity)
   let formData = $state({

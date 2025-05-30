@@ -3,6 +3,23 @@
   Datenschutzerklärung für die Fitness Tracker App
 -->
 
+<script>
+  // Svelte 5 runes for interactive privacy sections
+  let expandedSections = $state({
+    introduction: true,
+    dataCollection: true,
+    dataUsage: true,
+    dataStorage: false,
+    userRights: false,
+    noDataSharing: true,
+    contact: false
+  });
+
+  function toggleSection(sectionKey) {
+    expandedSections[sectionKey] = !expandedSections[sectionKey];
+  }
+</script>
+
 <svelte:head>
   <title>Datenschutz - Fitness Tracker</title>
   <meta name="description" content="Datenschutzerklärung der Fitness Tracker App - Wie wir mit deinen Daten umgehen.">
@@ -28,10 +45,12 @@
     <!-- Introduction -->
     <section class="content-section">
       <div class="content-card">
-        <h2 class="section-title">
+        <h2 class="section-title section-toggle" onclick={() => toggleSection('introduction')}>
           <span class="section-icon">ℹ️</span>
           Einleitung
+          <span class="toggle-icon">{expandedSections.introduction ? '−' : '+'}</span>
         </h2>
+        {#if expandedSections.introduction}
         <p class="section-text">
           Bei Fitness Tracker nehmen wir den Schutz deiner persönlichen Daten sehr ernst. 
           Diese Datenschutzerklärung informiert dich darüber, wie wir deine Daten sammeln, 
@@ -41,17 +60,19 @@
           <strong>Kurz gesagt:</strong> Wir sammeln nur die Daten, die für die Funktionalität 
           der App notwendig sind, und geben sie niemals an Dritte weiter.
         </div>
+        {/if}
       </div>
     </section>
 
     <!-- Data Collection -->
     <section class="content-section">
       <div class="content-card">
-        <h2 class="section-title">
+        <h2 class="section-title section-toggle" onclick={() => toggleSection('dataCollection')}>
           <span class="section-icon">📊</span>
           Welche Daten sammeln wir?
+          <span class="toggle-icon">{expandedSections.dataCollection ? '−' : '+'}</span>
         </h2>
-        
+        {#if expandedSections.dataCollection}
         <div class="data-category">
           <h3 class="category-title">🏋️ Trainingsdaten</h3>
           <ul class="data-list">
@@ -81,17 +102,19 @@
             <li>Zugriffszeitpunkte</li>
           </ul>
         </div>
+        {/if}
       </div>
     </section>
 
     <!-- Data Usage -->
     <section class="content-section">
       <div class="content-card">
-        <h2 class="section-title">
+        <h2 class="section-title section-toggle" onclick={() => toggleSection('dataUsage')}>
           <span class="section-icon">🎯</span>
           Wie verwenden wir deine Daten?
+          <span class="toggle-icon">{expandedSections.dataUsage ? '−' : '+'}</span>
         </h2>
-        
+        {#if expandedSections.dataUsage}
         <div class="usage-grid">
           <div class="usage-item">
             <div class="usage-icon">💪</div>
@@ -125,16 +148,19 @@
             </p>
           </div>
         </div>
+        {/if}
       </div>
     </section>
 
     <!-- Data Storage -->
     <section class="content-section">
       <div class="content-card">
-        <h2 class="section-title">
+        <h2 class="section-title section-toggle" onclick={() => toggleSection('dataStorage')}>
           <span class="section-icon">🗄️</span>
           Datenspeicherung
+          <span class="toggle-icon">{expandedSections.dataStorage ? '−' : '+'}</span>
         </h2>
+        {#if expandedSections.dataStorage}
         <p class="section-text">
           Deine Daten werden sicher in einer MongoDB-Datenbank gespeichert. 
           Wir verwenden moderne Verschlüsselungstechnologien und Sicherheitsmassnahmen:
@@ -158,16 +184,19 @@
             <span class="security-text">Automatische Backups zum Schutz vor Datenverlust</span>
           </div>
         </div>
+        {/if}
       </div>
     </section>
 
     <!-- User Rights -->
     <section class="content-section">
       <div class="content-card">
-        <h2 class="section-title">
+        <h2 class="section-title section-toggle" onclick={() => toggleSection('userRights')}>
           <span class="section-icon">⚖️</span>
           Deine Rechte
+          <span class="toggle-icon">{expandedSections.userRights ? '−' : '+'}</span>
         </h2>
+        {#if expandedSections.userRights}
         <p class="section-text">
           Du hast jederzeit folgende Rechte bezüglich deiner persönlichen Daten:
         </p>
@@ -193,16 +222,19 @@
             <p class="right-text">Erhalte deine Daten in einem übertragbaren Format</p>
           </div>
         </div>
+        {/if}
       </div>
     </section>
 
     <!-- No Data Sharing -->
     <section class="content-section">
       <div class="content-card no-sharing">
-        <h2 class="section-title">
+        <h2 class="section-title section-toggle" onclick={() => toggleSection('noDataSharing')}>
           <span class="section-icon">🚫</span>
           Keine Datenweitergabe
+          <span class="toggle-icon">{expandedSections.noDataSharing ? '−' : '+'}</span>
         </h2>
+        {#if expandedSections.noDataSharing}
         <p class="section-text">
           <strong>Wir verkaufen, vermieten oder teilen deine persönlichen Daten niemals mit Dritten.</strong> 
           Deine Trainingsdaten bleiben privat und werden ausschliesslich für die App-Funktionalität verwendet.
@@ -214,16 +246,19 @@
             <strong>100% Privatsphäre-Garantie:</strong> Deine Fitness-Daten gehören dir und bleiben bei dir.
           </div>
         </div>
+        {/if}
       </div>
     </section>
 
     <!-- Contact -->
     <section class="content-section">
       <div class="content-card">
-        <h2 class="section-title">
+        <h2 class="section-title section-toggle" onclick={() => toggleSection('contact')}>
           <span class="section-icon">📧</span>
           Kontakt zum Datenschutz
+          <span class="toggle-icon">{expandedSections.contact ? '−' : '+'}</span>
         </h2>
+        {#if expandedSections.contact}
         <p class="section-text">
           Bei Fragen zum Datenschutz oder zur Ausübung deiner Rechte kannst du uns kontaktieren:
         </p>
@@ -249,6 +284,7 @@
             </div>
           </div>
         </div>
+        {/if}
       </div>
     </section>
 
@@ -323,6 +359,23 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+  }
+
+  .section-title:hover {
+    color: var(--primary-color);
+  }
+
+  .section-toggle {
+    justify-content: space-between;
+  }
+
+  .toggle-icon {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-left: auto;
   }
 
   .section-icon {

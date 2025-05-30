@@ -67,22 +67,95 @@
           Das Projekt nutzt modernste Web-Technologien für optimale Performance und Entwicklererfahrung:
         </p>
         
-        <div class="tech-grid">
-          <div class="tech-item">
-            <div class="tech-badge">Svelte 5</div>
-            <p class="tech-description">Neueste Version mit Runes für reaktive State-Verwaltung</p>
+        <!-- Interactive Tech Tabs -->
+        <div class="tech-tabs">
+          <div class="tab-buttons">
+            <button 
+              class="tab-button" 
+              class:active={activeTab === 'frontend'}
+              onclick={() => setActiveTab('frontend')}
+            >
+              Frontend
+            </button>
+            <button 
+              class="tab-button" 
+              class:active={activeTab === 'backend'}
+              onclick={() => setActiveTab('backend')}
+            >
+              Backend
+            </button>
+            <button 
+              class="tab-button" 
+              class:active={activeTab === 'tools'}
+              onclick={() => setActiveTab('tools')}
+            >
+              Tools
+            </button>
           </div>
-          <div class="tech-item">
-            <div class="tech-badge">SvelteKit</div>
-            <p class="tech-description">Full-Stack Framework mit Server-Side Rendering</p>
-          </div>
-          <div class="tech-item">
-            <div class="tech-badge">MongoDB</div>
-            <p class="tech-description">NoSQL-Datenbank für flexible Datenstrukturen</p>
-          </div>
-          <div class="tech-item">
-            <div class="tech-badge">CSS Grid</div>
-            <p class="tech-description">Modernes Layout-System für responsive Designs</p>
+          
+          <div class="tab-content">
+            {#if activeTab === 'frontend'}
+              <div class="tech-grid">
+                <div class="tech-item">
+                  <div class="tech-badge">Svelte 5</div>
+                  <p class="tech-description">Neueste Version mit Runes für reaktive State-Verwaltung</p>
+                </div>
+                <div class="tech-item">
+                  <div class="tech-badge">SvelteKit</div>
+                  <p class="tech-description">Full-Stack Framework mit Server-Side Rendering</p>
+                </div>
+                <div class="tech-item">
+                  <div class="tech-badge">CSS Grid</div>
+                  <p class="tech-description">Modernes Layout-System für responsive Designs</p>
+                </div>
+                <div class="tech-item">
+                  <div class="tech-badge">TypeScript</div>
+                  <p class="tech-description">Typsicherheit für bessere Entwicklererfahrung</p>
+                </div>
+              </div>
+            {/if}
+            
+            {#if activeTab === 'backend'}
+              <div class="tech-grid">
+                <div class="tech-item">
+                  <div class="tech-badge">MongoDB</div>
+                  <p class="tech-description">NoSQL-Datenbank für flexible Datenstrukturen</p>
+                </div>
+                <div class="tech-item">
+                  <div class="tech-badge">Node.js</div>
+                  <p class="tech-description">JavaScript Runtime für Server-Side Logic</p>
+                </div>
+                <div class="tech-item">
+                  <div class="tech-badge">API Routes</div>
+                  <p class="tech-description">RESTful APIs mit SvelteKit Server Functions</p>
+                </div>
+                <div class="tech-item">
+                  <div class="tech-badge">Mongoose</div>
+                  <p class="tech-description">Elegant MongoDB Object Modeling</p>
+                </div>
+              </div>
+            {/if}
+            
+            {#if activeTab === 'tools'}
+              <div class="tech-grid">
+                <div class="tech-item">
+                  <div class="tech-badge">Vite</div>
+                  <p class="tech-description">Schneller Build-Tool und Dev-Server</p>
+                </div>
+                <div class="tech-item">
+                  <div class="tech-badge">ESLint</div>
+                  <p class="tech-description">Code-Qualität und Konsistenz</p>
+                </div>
+                <div class="tech-item">
+                  <div class="tech-badge">Git</div>
+                  <p class="tech-description">Versionskontrolle und Collaboration</p>
+                </div>
+                <div class="tech-item">
+                  <div class="tech-badge">Netlify</div>
+                  <p class="tech-description">Deployment und Hosting Platform</p>
+                </div>
+              </div>
+            {/if}
           </div>
         </div>
       </div>
@@ -182,6 +255,21 @@
 
   </div>
 </div>
+
+<script>
+  /*
+    SVELTE 5 RUNES - Interactive About Page
+    Modern reactive state for technology showcase
+  */
+  
+  // Tab state management using Svelte 5 runes
+  let activeTab = $state('frontend');
+  
+  // Tab switching function
+  function setActiveTab(tab) {
+    activeTab = tab;
+  }
+</script>
 
 <style>
   .about-page {
@@ -283,6 +371,42 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
+  }
+
+  .tech-tabs {
+    margin-top: 1.5rem;
+  }
+
+  .tab-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .tab-button {
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .tab-button:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+  }
+
+  .tab-button.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+  }
+
+  .tab-content {
+    min-height: 200px;
   }
 
   .tech-item {
