@@ -293,54 +293,6 @@ src/
 └── app.html                       # Main HTML Template
 ```
 
-## 🔄 Svelte 5 Runes Conversion Status
-
-### ✅ **Completed Conversions:**
-
-#### **Components:**
-
-- **Navigation.svelte** - ✅ Fully converted to Svelte 5 runes
-  - `$state()` for reactive component state
-  - `$derived()` for computed navigation states
-  - `$effect()` for side effects and event handling
-  - Reactive theme integration
-
-- **ThemeToggle.svelte** - ✅ Fully converted to Svelte 5 runes
-  - `$state()` for animation and theme state
-  - `$derived()` for computed CSS classes and theme values
-  - `$effect()` for debugging and state synchronization
-  - Modern event handling patterns
-
-#### **Pages:**
-
-- **Terms Page (/terms)** - ✅ Fully converted to Svelte 5 runes
-  - Complete `<script>` section with modern patterns
-  - `$state()`, `$derived()`, `$effect()` implementation
-  - Interactive functions and analytics tracking
-  - Fixed CSS variable references
-
-#### **State Management:**
-
-- **theme-simple.js** - ✅ Active Svelte 5 compatible theme store
-  - Reactive state management for components
-  - localStorage persistence and system theme detection
-  - Clean API for Svelte 5 runes components
-
-### 🎯 **Implementation Patterns:**
-
-1. **State Management**: `$state()` for reactive variables
-2. **Computed Values**: `$derived()` for calculated properties  
-3. **Side Effects**: `$effect()` for DOM updates and debugging
-4. **Event Handling**: Modern onclick handlers with state updates
-5. **Theme Persistence**: Reactive localStorage integration
-
-### 📈 **Performance Benefits:**
-
-- **Improved Reactivity**: Direct state access without store subscriptions
-- **Better Bundle Size**: No legacy Svelte store overhead
-- **Enhanced Developer Experience**: More intuitive reactive patterns
-- **Future-Proof**: Uses latest Svelte 5 features and patterns
-
 Development Guidelines
 
 ```markdown
