@@ -251,8 +251,8 @@ Automatisches Deployment über Netlify:
 src/
 ├── lib/
 │   ├── components/     # Wiederverwendbare Svelte Components
-│   │   ├── Navigation.svelte      # Hauptnavigation mit Theme Toggle (✅ Svelte 5 Runes)
-│   │   └── ThemeToggle.svelte     # Dark/Light Mode Toggle (✅ Svelte 5 Runes)
+│   │   ├── Navigation.svelte      # Hauptnavigation mit Theme Toggle
+│   │   └── ThemeToggle.svelte     # Dark/Light Mode Toggle
 │   ├── stores/         # State Management
 │   │   ├── theme-simple.js        # Svelte 5 Compatible Theme Store (✅ Active)
 │   │   ├── theme-svelte5.js       # Advanced Reactive Theme Store
@@ -289,7 +289,7 @@ src/
 │   ├── about/                     # About Page
 │   ├── help/                      # Help & Support
 │   ├── privacy/                   # Privacy Policy
-│   ├── terms/                     # Terms of Service (✅ Svelte 5 Runes)
+│   ├── terms/                     # Terms of Service
 └── app.html                       # Main HTML Template
 ```
 
