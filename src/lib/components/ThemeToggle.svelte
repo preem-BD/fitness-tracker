@@ -6,36 +6,55 @@
 
 <script>
   /**
-   * COMPONENT IMPORTS
-   * Theme Store und Utilities
+   * SVELTE 5 RUNES VERSION - THEME TOGGLE COMPONENT
+   * Moderner Toggle-Button mit Svelte 5 State Management
    */
-  import { isDarkMode, toggleTheme, themeIcon, themeLabel } from '$lib/stores/theme.js';
+  import { getThemeState, toggleTheme, getThemeIcon, getThemeLabel, initTheme } from '$lib/stores/theme-simple.js';
+  import { onMount } from 'svelte';
   
   /**
-   * COMPONENT STATE
-   * Animation state management
+   * SVELTE 5 STATE
+   * Component-lokaler State mit $state()
    */
-  let isAnimating = false;
+  let isAnimating = $state(false);
+  
+  // Get initial theme state
+  let themeState = getThemeState();
+  
+  // Reactive theme values using $state
+  let isDarkMode = $state(themeState.isDarkMode);
+  
+  // Derived values using $derived
+  let themeIcon = $derived(getThemeIcon(isDarkMode));
+  let themeLabel = $derived(getThemeLabel(isDarkMode));
+  let buttonClass = $derived(`theme-toggle ${isAnimating ? 'animating' : ''} ${isDarkMode ? 'dark' : ''}`);
+  let iconClass = $derived(`theme-icon ${isAnimating ? 'rotating' : ''}`);
+  let indicatorClass = $derived(`toggle-indicator ${isDarkMode ? 'active' : ''}`);
   
   /**
-   * TOGGLE FUNCTION
-   * Behandelt Theme-Wechsel mit Animation
+   * INTERACTION FUNCTIONS
+   * Event Handlers mit Animation
    */
   function handleToggle() {
     if (isAnimating) return;
     
     isAnimating = true;
-    toggleTheme();
+    const newDarkMode = toggleTheme();
     
-    // Animation Reset
+    // Update local state to trigger reactivity
+    isDarkMode = newDarkMode;
+    
+    // Animation Reset nach Transition
     setTimeout(() => {
       isAnimating = false;
     }, 300);
+    
+    console.log('🎨 Theme Toggle aktiviert:', isDarkMode ? 'Dark' : 'Light');
   }
   
   /**
-   * KEYBOARD HANDLER
-   * Accessibility für Keyboard Navigation
+   * KEYBOARD ACCESSIBILITY
+   * Unterstützung für Keyboard Navigation
    */
   function handleKeydown(event) {
     if (event.key === 'Enter' || event.key === ' ') {
@@ -43,6 +62,27 @@
       handleToggle();
     }
   }
+  
+  /**
+   * SVELTE 5 EFFECTS
+   * Side Effects für Debugging und Theme Sync
+   */
+  $effect(() => {
+    console.log('🎨 ThemeToggle State:', {
+      isDarkMode,
+      isAnimating,
+      themeIcon,
+      timestamp: new Date().toISOString()
+    });
+  });
+  
+  // Initialize theme on mount
+  onMount(() => {
+    initTheme();
+    // Sync with current theme state
+    const currentState = getThemeState();
+    isDarkMode = currentState.isDarkMode;
+  });
 </script>
 
 <!--
@@ -53,23 +93,23 @@
   type="button"
   class="theme-toggle"
   class:animating={isAnimating}
-  class:dark={$isDarkMode}
+  class:dark={isDarkMode}
   onclick={handleToggle}
   onkeydown={handleKeydown}
-  aria-label={$themeLabel}
-  title={$themeLabel}
+  aria-label={themeLabel}
+  title={themeLabel}
 >
   <span class="theme-icon" class:rotating={isAnimating}>
-    {$themeIcon}
+    {themeIcon}
   </span>
   
   <!-- Optional: Text Label für Desktop -->
   <span class="theme-text">
-    {$isDarkMode ? 'Light' : 'Dark'}
+    {isDarkMode ? 'Light' : 'Dark'}
   </span>
   
   <!-- Visual Indicator -->
-  <div class="toggle-indicator" class:active={$isDarkMode}></div>
+  <div class="toggle-indicator" class:active={isDarkMode}></div>
 </button>
 
 <style>

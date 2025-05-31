@@ -221,19 +221,17 @@
             <a href="/goals/create" class="action-link" onclick={closeMobileMenu}>
               🎯 Neues Ziel
             </a>
-          </li></ul>      </div>      
-      
-      <!-- Theme Toggle -->
+          </li></ul>      </div>      <!-- Theme Toggle -->
       <button 
         type="button" 
         class="action-btn theme-btn"
-        onclick={toggleTheme}
-        aria-label={$themeLabel}
-        title={$themeLabel}
+        onclick={handleThemeToggle}
+        aria-label={themeLabel}
+        title={themeLabel}
       >
-        <span class="action-icon">{$themeIcon}</span>
-        <span class="action-text">{$isDarkMode ? 'Light' : 'Dark'}</span>
-      </button>      <!-- User Menu (Coming Soon - redirects to Sessions) -->
+        <span class="action-icon">{themeIcon}</span>
+        <span class="action-text">{isDarkMode ? 'Light' : 'Dark'}</span>
+      </button><!-- User Menu (Coming Soon - redirects to Sessions) -->
       <a href="/sessions" class="action-btn user-btn" onclick={closeMobileMenu}>
         <span class="action-icon">👤</span>
         <span class="action-text">Profil</span>
@@ -262,11 +260,8 @@
     // SvelteKit Imports für Routing
   import { page } from '$app/stores';
   import { browser } from '$app/environment';
-  import { onMount } from 'svelte';
-  
-  // Theme Store Import
-  import { isDarkMode, toggleTheme, themeIcon, themeLabel, initTheme } from '$lib/stores/theme.js';
-
+  import { onMount } from 'svelte';  // Theme Store Import
+  import { getThemeState, toggleTheme, getThemeIcon, getThemeLabel, initTheme } from '$lib/stores/theme-simple.js';
   /* 
     COMPONENT STATE (Svelte 5 Runes)
     Lokaler Component State mit $state()
@@ -276,6 +271,9 @@
   let isGoalsDropdownOpen = $state(false);
   let isQuickAddOpen = $state(false);
 
+  // Theme state
+  let themeState = getThemeState();
+  let isDarkMode = $state(themeState.isDarkMode);
   /* 
     DERIVED VALUES
     Berechnete Werte mit $derived()
@@ -286,6 +284,10 @@
   let isWorkoutSection = $derived(currentPath.startsWith('/workouts'));
   let isExerciseSection = $derived(currentPath.startsWith('/exercises'));
   let isGoalsSection = $derived(currentPath.startsWith('/goals'));
+  
+  // Theme derived values
+  let themeIcon = $derived(getThemeIcon(isDarkMode));
+  let themeLabel = $derived(getThemeLabel(isDarkMode));
   /* 
     NAVIGATION FUNCTIONS
     Event Handler und Utility Functions
@@ -352,7 +354,6 @@
       isQuickAddOpen = false;
     }
   }
-
   function toggleQuickAdd() {
     isQuickAddOpen = !isQuickAddOpen;
     
@@ -362,6 +363,12 @@
       isExerciseDropdownOpen = false;
       isGoalsDropdownOpen = false;
     }
+  }
+  
+  // Theme Toggle Function
+  function handleThemeToggle() {
+    const newDarkMode = toggleTheme();
+    isDarkMode = newDarkMode; // Update local state for reactivity
   }
 
   /* 
@@ -420,12 +427,14 @@
         document.body.style.overflow = '';
       };
     }  });
-
   // Theme Store Initialisierung
   onMount(() => {
     if (browser) {
       try {
         initTheme();
+        // Sync with current theme state
+        const currentState = getThemeState();
+        isDarkMode = currentState.isDarkMode;
       } catch (error) {
         console.warn('Theme initialization failed:', error);
       }
