@@ -1,9 +1,10 @@
 # README.md
 
 ## Fitness Tracker
+
 Moderne Fitness-App für Workout-, Exercise- und Goal-Management
 
-**Live Demo:** https://fitness-tracker-zhaw.netlify.app/
+**Live Demo:** [https://fitness-tracker-zhaw.netlify.app/](https://fitness-tracker-zhaw.netlify.app/)
 
 ## 📋 Übersicht
 
@@ -89,7 +90,7 @@ Der Fitness Tracker ist eine vollständige Web-Anwendung zur Verwaltung von Fitn
 
 ![Mobile](mobile.PNG)
 
-*Vollständig responsive Design für alle Geräte*
+> Vollständig responsive Design für alle Geräte
 
 ## 🚀 Erweiterungen über Grundanforderungen
 
@@ -109,7 +110,7 @@ Der Fitness Tracker ist eine vollständige Web-Anwendung zur Verwaltung von Fitn
 - Verschiedene Goal-Typen mit individueller Validierung
 - Visual Progress Indicators
 
-### 📊 Statistics Dashboard
+### 📊 Advanced Analytics
 
 - MongoDB Aggregation Pipelines für komplexe Statistiken
 - Real-time Analytics und Erfolgsquoten-Berechnung
@@ -246,11 +247,17 @@ Automatisches Deployment über Netlify:
 ## Code-Struktur
 
 ```md
+
 src/
 ├── lib/
 │   ├── components/     # Wiederverwendbare Svelte Components
-│   │   ├── Navigation.svelte      # Hauptnavigation mit Theme Toggle
-│   │   └── ThemeToggle.svelte     # Dark/Light Mode Toggle
+│   │   ├── Navigation.svelte      # Hauptnavigation mit Theme Toggle (✅ Svelte 5 Runes)
+│   │   └── ThemeToggle.svelte     # Dark/Light Mode Toggle (✅ Svelte 5 Runes)
+│   ├── stores/         # State Management
+│   │   ├── theme-simple.js        # Svelte 5 Compatible Theme Store (✅ Active)
+│   │   ├── theme-svelte5.js       # Advanced Reactive Theme Store
+│   │   ├── theme-runes.js         # Legacy Runes Attempt
+│   │   └── theme.js               # Original Legacy Theme Store
 │   ├── database/       # MongoDB Models und Connection
 │   │   ├── mongodb.js             # Database Connection
 │   │   └── models/                # Data Models
@@ -282,17 +289,67 @@ src/
 │   ├── about/                     # About Page
 │   ├── help/                      # Help & Support
 │   ├── privacy/                   # Privacy Policy
-│   └── terms/                     # Terms of Service
+│   ├── terms/                     # Terms of Service (✅ Svelte 5 Runes)
 └── app.html                       # Main HTML Template
 ```
 
+## 🔄 Svelte 5 Runes Conversion Status
+
+### ✅ **Completed Conversions:**
+
+#### **Components:**
+
+- **Navigation.svelte** - ✅ Fully converted to Svelte 5 runes
+  - `$state()` for reactive component state
+  - `$derived()` for computed navigation states
+  - `$effect()` for side effects and event handling
+  - Reactive theme integration
+
+- **ThemeToggle.svelte** - ✅ Fully converted to Svelte 5 runes
+  - `$state()` for animation and theme state
+  - `$derived()` for computed CSS classes and theme values
+  - `$effect()` for debugging and state synchronization
+  - Modern event handling patterns
+
+#### **Pages:**
+
+- **Terms Page (/terms)** - ✅ Fully converted to Svelte 5 runes
+  - Complete `<script>` section with modern patterns
+  - `$state()`, `$derived()`, `$effect()` implementation
+  - Interactive functions and analytics tracking
+  - Fixed CSS variable references
+
+#### **State Management:**
+
+- **theme-simple.js** - ✅ Active Svelte 5 compatible theme store
+  - Reactive state management for components
+  - localStorage persistence and system theme detection
+  - Clean API for Svelte 5 runes components
+
+### 🎯 **Implementation Patterns:**
+
+1. **State Management**: `$state()` for reactive variables
+2. **Computed Values**: `$derived()` for calculated properties  
+3. **Side Effects**: `$effect()` for DOM updates and debugging
+4. **Event Handling**: Modern onclick handlers with state updates
+5. **Theme Persistence**: Reactive localStorage integration
+
+### 📈 **Performance Benefits:**
+
+- **Improved Reactivity**: Direct state access without store subscriptions
+- **Better Bundle Size**: No legacy Svelte store overhead
+- **Enhanced Developer Experience**: More intuitive reactive patterns
+- **Future-Proof**: Uses latest Svelte 5 features and patterns
+
 Development Guidelines
 
-    Svelte 5 Runes: Verwende $state(), $derived(), $effect()
-    Error Handling: Immer try/catch mit user-friendly Messages
-    MongoDB: Verwende Aggregation Pipelines für komplexe Queries
-    Responsive Design: Mobile-First Approach
-    Accessibility: Semantic HTML und ARIA Labels
+```markdown
+- Svelte 5 Runes: Verwende $state(), $derived(), $effect()
+- Error Handling: Immer try/catch mit user-friendly Messages
+- MongoDB: Verwende Aggregation Pipelines für komplexe Queries
+- Responsive Design: Mobile-First Approach
+- Accessibility: Semantic HTML und ARIA Labels
+```
 
 📄 Lizenz
 
@@ -301,8 +358,10 @@ MIT License - Siehe LICENSE.md für Details
 
 Contributions sind willkommen! Bitte erstelle einen Pull Request mit:
 
-    Klare Beschreibung der Änderungen
-    Tests für neue Features
-    Dokumentation Updates
+```markdown
+- Klare Beschreibung der Änderungen
+- Tests für neue Features
+- Dokumentation Updates
+```
 
 Erstellt mit ❤️ und Svelte 5 für das ZHAW Prototyping Modul
